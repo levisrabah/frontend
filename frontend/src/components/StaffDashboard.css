@@ -1,0 +1,407 @@
+/* StaffDashboard.css */
+.staff-dashboard {
+    padding: var(--spacing-6);
+    background-color: var(--neutral-50);
+    min-height: 100vh;
+  }
+  
+  /* Loading State */
+  .dashboard-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: var(--spacing-4);
+  }
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--neutral-200);
+    border-top-color: var(--primary-500);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Stats Overview */
+  .dashboard-stats {
+    margin-bottom: var(--spacing-8);
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-6);
+  }
+  
+  .stat-card {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+  }
+  
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+  }
+  
+  .appointments-icon {
+    background-color: var(--primary-100);
+    color: var(--primary-600);
+  }
+  
+  .patients-icon {
+    background-color: var(--success-light);
+    color: var(--success);
+  }
+  
+  .requests-icon {
+    background-color: var(--warning-light);
+    color: var(--warning);
+  }
+  
+  .visits-icon {
+    background-color: var(--info-light);
+    color: var(--info);
+  }
+  
+  .stat-info {
+    flex: 1;
+  }
+  
+  .stat-info h3 {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .stat-value {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--neutral-900);
+  }
+  
+  /* Dashboard Sections */
+  .dashboard-section {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-8);
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+  }
+  
+  .section-header h2 {
+    font-size: var(--text-xl);
+    color: var(--neutral-900);
+  }
+  
+  /* Appointments List */
+  .appointments-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  
+  .appointment-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-6);
+    padding: var(--spacing-4);
+    border: 1px solid var(--neutral-200);
+    border-radius: var(--radius-lg);
+    background-color: white;
+  }
+  
+  .appointment-time {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    color: var(--primary-600);
+    min-width: 100px;
+  }
+  
+  .appointment-info {
+    flex: 1;
+  }
+  
+  .appointment-info h4 {
+    font-size: var(--text-lg);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .appointment-type {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .appointment-status {
+    display: inline-block;
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+  }
+  
+  .appointment-status.scheduled {
+    background-color: var(--primary-50);
+    color: var(--primary-700);
+  }
+  
+  .appointment-status.completed {
+    background-color: var(--success-light);
+    color: var(--success);
+  }
+  
+  .appointment-status.cancelled {
+    background-color: var(--error-light);
+    color: var(--error);
+  }
+  
+  .appointment-status.no-show {
+    background-color: var(--warning-light);
+    color: var(--warning);
+  }
+  
+  .appointment-actions {
+    display: flex;
+    gap: var(--spacing-3);
+    align-items: center;
+  }
+  
+  .status-select {
+    padding: var(--spacing-2) var(--spacing-3);
+    border: 1px solid var(--neutral-300);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--neutral-700);
+    background-color: white;
+  }
+  
+  /* Dashboard Grid */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-6);
+    margin-bottom: var(--spacing-8);
+  }
+  
+  /* Requests List */
+  .requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  
+  .request-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-4);
+    border: 1px solid var(--neutral-200);
+    border-radius: var(--radius-lg);
+    background-color: white;
+  }
+  
+  .request-type-icon {
+    font-size: var(--text-2xl);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--neutral-100);
+    border-radius: var(--radius-lg);
+  }
+  
+  .request-info {
+    flex: 1;
+  }
+  
+  .request-info h4 {
+    font-size: var(--text-base);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .request-info p {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .request-date {
+    font-size: var(--text-xs);
+    color: var(--neutral-500);
+  }
+  
+  /* Visits List */
+  .visits-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  
+  .visit-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-4);
+    border: 1px solid var(--neutral-200);
+    border-radius: var(--radius-lg);
+    background-color: white;
+  }
+  
+  .visit-date {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    min-width: 100px;
+  }
+  
+  .visit-info {
+    flex: 1;
+  }
+  
+  .visit-info h4 {
+    font-size: var(--text-base);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .visit-type {
+    font-size: var(--text-sm);
+    color: var(--primary-600);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .visit-diagnosis {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  /* Quick Actions */
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-6);
+  }
+  
+  .action-card {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .action-icon {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .action-card h3 {
+    font-size: var(--text-lg);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .action-card p {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  .no-data {
+    text-align: center;
+    padding: var(--spacing-8);
+    color: var(--neutral-600);
+    background-color: var(--neutral-50);
+    border-radius: var(--radius-lg);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .quick-actions {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .staff-dashboard {
+      padding: var(--spacing-4);
+    }
+  
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .appointment-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-3);
+    }
+  
+    .appointment-actions {
+      width: 100%;
+      flex-direction: column;
+    }
+  
+    .status-select {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .quick-actions {
+      grid-template-columns: 1fr;
+    }
+  
+    .stat-card {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .section-header {
+      flex-direction: column;
+      gap: var(--spacing-3);
+      text-align: center;
+    }
+  }
