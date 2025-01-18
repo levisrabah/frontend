@@ -1,0 +1,119 @@
+.loading {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-3);
+  }
+  
+  .loading-spinner {
+    position: relative;
+    animation: spinner-rotate 2s linear infinite;
+  }
+  
+  .loading-circle {
+    stroke-linecap: round;
+    animation: spinner-dash 1.5s ease-in-out infinite;
+  }
+  
+  /* Size Variations */
+  .loading-sm .loading-spinner {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .loading-md .loading-spinner {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .loading-lg .loading-spinner {
+    width: 60px;
+    height: 60px;
+  }
+  
+  /* Color Variations */
+  .loading-primary .loading-circle {
+    stroke: var(--primary-500);
+  }
+  
+  .loading-secondary .loading-circle {
+    stroke: var(--neutral-500);
+  }
+  
+  .loading-success .loading-circle {
+    stroke: var(--success);
+  }
+  
+  .loading-error .loading-circle {
+    stroke: var(--error);
+  }
+  
+  /* Full Screen Mode */
+  .loading-fullscreen {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: var(--z-overlay);
+    display: flex;
+  }
+  
+  /* Loading Text */
+  .loading-text {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  /* Loading Overlay */
+  .loading-overlay-container {
+    position: relative;
+  }
+  
+  .loading-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  
+  .loading-overlay-blur {
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Animations */
+  @keyframes spinner-rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spinner-dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
+  
+  /* Screen Reader Only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
