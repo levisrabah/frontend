@@ -1,0 +1,287 @@
+.staff-info-card {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .staff-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-6);
+    padding: var(--spacing-6);
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .staff-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-full);
+    background-color: var(--primary-100);
+    color: var(--primary-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+  }
+  
+  .staff-basic-info {
+    flex: 1;
+  }
+  
+  .staff-basic-info h2 {
+    font-size: var(--text-2xl);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .staff-meta {
+    display: flex;
+    gap: var(--spacing-4);
+    color: var(--neutral-600);
+    font-size: var(--text-sm);
+  }
+  
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+  }
+  
+  .meta-item.rating {
+    color: var(--warning);
+    font-weight: var(--font-medium);
+  }
+  
+  .staff-actions {
+    display: flex;
+    gap: var(--spacing-3);
+  }
+  
+  /* Tabs */
+  .staff-tabs {
+    display: flex;
+    padding: 0 var(--spacing-6);
+    border-bottom: 1px solid var(--neutral-200);
+    background-color: var(--neutral-50);
+  }
+  
+  .tab-button {
+    padding: var(--spacing-4) var(--spacing-6);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--neutral-600);
+    font-weight: var(--font-medium);
+    cursor: pointer;
+    transition: var(--transition-base);
+  }
+  
+  .tab-button:hover {
+    color: var(--primary-600);
+  }
+  
+  .tab-button.active {
+    color: var(--primary-600);
+    border-bottom-color: var(--primary-600);
+  }
+  
+  /* Tab Content */
+  .tab-content {
+    padding: var(--spacing-6);
+  }
+  
+  /* Overview Tab */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-6);
+  }
+  
+  .info-section {
+    background-color: var(--neutral-50);
+    padding: var(--spacing-4);
+    border-radius: var(--radius-lg);
+  }
+  
+  .info-section.mt-6 {
+    margin-top: var(--spacing-6);
+  }
+  
+  .info-section h3 {
+    font-size: var(--text-lg);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .info-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+  }
+  
+  .info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-2) 0;
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .info-item:last-child {
+    border-bottom: none;
+  }
+  
+  .info-item .label {
+    color: var(--neutral-600);
+    font-weight: var(--font-medium);
+  }
+  
+  .info-item .value {
+    color: var(--neutral-900);
+  }
+  
+  /* Specializations */
+  .specializations-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+  }
+  
+  .specialization-tag {
+    background-color: var(--primary-100);
+    color: var(--primary-700);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+  }
+  
+  .professional-summary {
+    color: var(--neutral-700);
+    line-height: 1.6;
+  }
+  
+  /* Schedule Tab */
+  .availability-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-4);
+  }
+  
+  .availability-item {
+    background-color: var(--neutral-50);
+    padding: var(--spacing-4);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+  
+  .availability-item .day {
+    font-weight: var(--font-medium);
+    color: var(--neutral-900);
+  }
+  
+  .availability-item .hours {
+    color: var(--neutral-600);
+    font-size: var(--text-sm);
+  }
+  
+  /* Patients Tab */
+  .recent-patients {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  
+  .patient-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-4);
+    background-color: var(--neutral-50);
+    border-radius: var(--radius-lg);
+  }
+  
+  .patient-brief h4 {
+    font-size: var(--text-base);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .patient-brief p {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  .no-data {
+    text-align: center;
+    padding: var(--spacing-8);
+    color: var(--neutral-600);
+    background-color: var(--neutral-50);
+    border-radius: var(--radius-lg);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .availability-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .staff-header {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--spacing-4);
+    }
+  
+    .staff-avatar {
+      margin: 0 auto;
+    }
+  
+    .staff-meta {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  
+    .staff-actions {
+      width: 100%;
+      flex-direction: column;
+    }
+  
+    .staff-tabs {
+      overflow-x: auto;
+      padding: 0;
+    }
+  
+    .tab-button {
+      padding: var(--spacing-3) var(--spacing-4);
+      white-space: nowrap;
+    }
+  
+    .patient-item {
+      flex-direction: column;
+      gap: var(--spacing-3);
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .availability-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .info-section {
+      padding: var(--spacing-3);
+    }
+  
+    .staff-actions button,
+    .staff-actions a {
+      width: 100%;
+    }
+  }
