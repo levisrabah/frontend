@@ -1,0 +1,519 @@
+.reports-page {
+    padding: var(--spacing-6);
+  }
+  
+  /* Header Styles */
+  .reports-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+  }
+  
+  .header-content h1 {
+    font-size: var(--text-3xl);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .header-content p {
+    color: var(--neutral-600);
+  }
+  
+  .header-controls {
+    display: flex;
+    gap: var(--spacing-4);
+    align-items: center;
+  }
+  
+  .time-range-select {
+    padding: var(--spacing-2) var(--spacing-4);
+    border: 1px solid var(--neutral-300);
+    border-radius: var(--radius-md);
+    background-color: white;
+    color: var(--neutral-700);
+    font-size: var(--text-sm);
+  }
+  
+  /* Navigation */
+  .reports-navigation {
+    display: flex;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-8);
+    background-color: var(--neutral-100);
+    padding: var(--spacing-1);
+    border-radius: var(--radius-lg);
+    width: fit-content;
+  }
+  
+  .nav-button {
+    padding: var(--spacing-2) var(--spacing-4);
+    border: none;
+    background: none;
+    border-radius: var(--radius-md);
+    color: var(--neutral-600);
+    cursor: pointer;
+    transition: var(--transition-base);
+  }
+  
+  .nav-button.active {
+    background-color: white;
+    color: var(--primary-600);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  /* Overview Metrics */
+  .overview-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-6);
+    margin-bottom: var(--spacing-8);
+  }
+  
+  .metric-card {
+    background-color: white;
+    padding: var(--spacing-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .metric-card h3 {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .metric-value {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .metric-change {
+    font-size: var(--text-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+  }
+  
+  .metric-change.positive {
+    color: var(--success);
+  }
+  
+  .metric-change.negative {
+    color: var(--error);
+  }
+  
+  .metric-label {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+  }
+  
+  /* Charts Grid */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-6);
+    margin-bottom: var(--spacing-8);
+  }
+  
+  .chart-card {
+    background-color: white;
+    padding: var(--spacing-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .chart-card h3 {
+    font-size: var(--text-lg);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-6);
+  }
+  
+  .chart-container {
+    height: 300px;
+    position: relative;
+  }
+  
+  /* Revenue Chart */
+  .revenue-chart {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    gap: var(--spacing-2);
+    padding-bottom: var(--spacing-6);
+  }
+  
+  .chart-bar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .bar {
+    width: 40px;
+    background-color: var(--primary-500);
+    border-radius: var(--radius-md);
+    transition: height 0.3s ease;
+    position: relative;
+  }
+  
+  .bar:hover {
+    background-color: var(--primary-600);
+  }
+  
+  .bar-value {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--text-xs);
+    color: var(--neutral-700);
+    white-space: nowrap;
+  }
+  
+  .bar-label {
+    margin-top: var(--spacing-2);
+    font-size: var(--text-xs);
+    color: var(--neutral-600);
+  }
+  
+  /* Department Stats */
+  .department-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  
+  .dept-stat-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+  }
+  
+  .dept-info {
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+  }
+  
+  .dept-name {
+    font-weight: var(--font-medium);
+    color: var(--neutral-900);
+  }
+  
+  .dept-count {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  .dept-bar-container {
+    flex: 1;
+    height: 8px;
+    background-color: var(--neutral-100);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+  }
+  
+  .dept-bar {
+    height: 100%;
+    background-color: var(--primary-500);
+    border-radius: var(--radius-full);
+    transition: width 0.3s ease;
+  }
+  
+  .dept-revenue {
+    min-width: 100px;
+    text-align: right;
+    font-weight: var(--font-medium);
+    color: var(--neutral-900);
+  }
+  
+  /* Staff Performance */
+  .staff-performance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-6);
+  }
+  
+  .staff-performance-card {
+    background-color: white;
+    padding: var(--spacing-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .staff-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .staff-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background-color: var(--primary-100);
+    color: var(--primary-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+  }
+  
+  .staff-info {
+    flex: 1;
+  }
+  
+  .staff-info h4 {
+    font-size: var(--text-lg);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .staff-info p {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  .performance-rating {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--warning);
+  }
+  
+  .performance-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-4);
+  }
+  
+  .metric {
+    background-color: var(--neutral-50);
+    padding: var(--spacing-3);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+  }
+  
+  .metric .label {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  .metric .value {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--neutral-900);
+  }
+  
+  /* Appointments Analysis */
+  .appointments-analysis {
+    margin-top: var(--spacing-6);
+  }
+  
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-6);
+  }
+  
+  .analysis-card {
+    background-color: white;
+    padding: var(--spacing-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .analysis-card h3 {
+    font-size: var(--text-lg);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-6);
+  }
+  
+  .pie-chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  
+  .pie-segment {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+  
+  .segment-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .segment-label .type {
+    font-weight: var(--font-medium);
+    color: var(--neutral-900);
+    text-transform: capitalize;
+  }
+  
+  .segment-label .count {
+    color: var(--neutral-600);
+  }
+  
+  .segment-label .percentage {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+  }
+  
+  .segment-bar {
+    height: 8px;
+    background-color: var(--primary-500);
+    border-radius: var(--radius-full);
+    transition: width 0.3s ease;
+  }
+  
+  .time-slots-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  
+  .time-slot-card {
+    display: flex;
+    gap: var(--spacing-4);
+    padding: var(--spacing-4);
+    background-color: var(--neutral-50);
+    border-radius: var(--radius-lg);
+  }
+  
+  .slot-time {
+    min-width: 100px;
+    font-weight: var(--font-medium);
+    color: var(--neutral-900);
+  }
+  
+  .slot-stats {
+    flex: 1;
+  }
+  
+  .slot-usage {
+    margin-bottom: var(--spacing-2);
+    position: relative;
+  }
+  
+  .usage-bar {
+    height: 8px;
+    background-color: var(--primary-500);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .usage-label {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  .slot-metrics {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  /* Loading and Error States */
+  .loading-state,
+  .error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: var(--spacing-4);
+  }
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--neutral-200);
+    border-top-color: var(--primary-500);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .overview-metrics {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .charts-grid,
+    .analysis-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .reports-page {
+      padding: var(--spacing-4);
+    }
+  
+    .reports-header {
+      flex-direction: column;
+      gap: var(--spacing-4);
+      text-align: center;
+    }
+  
+    .header-controls {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .time-range-select {
+      width: 100%;
+    }
+  
+    .reports-navigation {
+      width: 100%;
+      overflow-x: auto;
+      justify-content: flex-start;
+      padding: var(--spacing-2);
+    }
+  
+    .nav-button {
+      white-space: nowrap;
+    }
+  
+    .performance-metrics {
+      grid-template-columns: 1fr;
+    }
+  
+    .time-slot-card {
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .overview-metrics {
+      grid-template-columns: 1fr;
+    }
+  
+    .staff-header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .performance-rating {
+      margin-top: var(--spacing-2);
+    }
+  }
