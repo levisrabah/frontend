@@ -4,7 +4,7 @@ import { useApi } from '../../hooks/useApi';
 import Input from '../../components/common/Input';
 import AppointmentCard from '../../components/shared/AppointmentCard';
 import Button from '../../components/common/Button';
-import './AppointmentManagement.css';
+import '.../css/AppointmentManagement.css';
 
 const AppointmentManagement = () => {
   const api = useApi();

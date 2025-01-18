@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import './Sidebar.css';
+import '.../css/Sidebar.css';
 
 const SidebarItem = ({ item, isCollapsed, isNested = false }) => {
   const [isOpen, setIsOpen] = useState(false);
