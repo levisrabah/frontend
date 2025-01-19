@@ -1,7 +1,7 @@
 //FAQPage.jsx
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-// import '../../css/FAQPage.css';
+import '../../css/FAQPage.css';
 
 const FAQPage = () => {
   const [searchQuery, setSearchQuery] = useState('');

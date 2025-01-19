@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-// import '../../css/TeamPage.css';
+import '../../css/TeamPage.css';
 
 const TeamPage = () => {
   const [activeSpecialty, setActiveSpecialty] = useState('all');
