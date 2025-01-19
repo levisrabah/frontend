@@ -44,15 +44,19 @@
   position: absolute;
   right: 0;
   top: 0;
-  width: 50%;
+  width: 100%;
   height: 100%;
   overflow: hidden;
+  /* background-color: rgba(0, 0, 0, 1); */
+  filter: brightness(80%);
+
 }
 
 .home-hero__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
 }
 
 /* Container */

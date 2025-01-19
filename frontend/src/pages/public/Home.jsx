@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../css/HomePage.css';
+import homeImage from '../../images/herbalImage.jpg';
+
 
 const HomePage = () => {
   const features = [
@@ -117,7 +119,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="home-hero__image">
-          <img src="/images/hero-doctor.jpg" alt="Medical professionals" />
+          <img src={homeImage} alt="Medical professionals" />
         </div>
       </section>
 
