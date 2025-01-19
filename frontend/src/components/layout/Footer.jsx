@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../css/Footer.css';
+import clinicLogo from '../../images/clinicLogo.jpeg';
+
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -44,8 +46,8 @@ const Footer = () => {
   ];
 
   const contactInfo = {
-    address: '123 Medical Center Drive, Healthcare City, HC 12345',
-    phone: '+1 (555) 123-4567',
+    address: '123 Medical Center Drive, Nairobi',
+    phone: '+254712345678',
     email: 'info@medicalcenter.com',
     emergency: '911',
   };
@@ -57,7 +59,7 @@ const Footer = () => {
           {/* Logo and Contact Section */}
           <div className="mc-footer__brand">
             <Link to="/" className="mc-footer__logo">
-              <img src="/logo.svg" alt="Medical Center Logo" />
+              <img src={clinicLogo} alt="Medical Center Logo" />
               <span>Medical Center</span>
             </Link>
             

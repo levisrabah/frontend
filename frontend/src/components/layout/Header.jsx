@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../../css/Header.css';
+import clinicLogo from '../../images/clinicLogo.jpeg';
+
 
 const Header = ({ user, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,7 +76,7 @@ const Header = ({ user, onLogout }) => {
     <header className={`mc-header ${isScrolled ? 'mc-header--scrolled' : ''}`}>
       <div className="mc-header__container">
         <Link to="/" className="mc-header__logo">
-          <img src="/logo.svg" alt="Hospital Logo" className="mc-header__logo-img" />
+          <img src={clinicLogo}  alt="Hospital Logo" className="mc-header__logo-img" />
           <span className="mc-header__logo-text">Medical Center</span>
         </Link>
 
