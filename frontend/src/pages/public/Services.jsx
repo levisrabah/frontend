@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import './ServicesPage.css';
+import '../../css/ServicesPage.css';
 
 const ServicesPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');

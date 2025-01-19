@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './StaffInfo.css';
+import '../../css/StaffInfo.css';
 
 const StaffInfo = ({ staff, showActions = true }) => {
   const [activeTab, setActiveTab] = useState('overview');

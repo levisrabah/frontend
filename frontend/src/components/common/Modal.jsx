@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import '.../css/Modal.css';
+import '../../css/Modal.css';
 
 const Modal = ({
   isOpen,

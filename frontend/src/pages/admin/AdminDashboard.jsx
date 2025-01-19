@@ -1,7 +1,7 @@
 //AdminDashboard.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './AdminDashboard.css';
+import '../../css/AdminDashboard.css';
 
 const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);

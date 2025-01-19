@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './AboutPage.css';
+import '../../css/AboutPage.css';
 
 const AboutPage = () => {
   const milestones = [

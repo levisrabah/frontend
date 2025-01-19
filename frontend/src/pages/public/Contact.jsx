@@ -1,7 +1,7 @@
 //ContactPage.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './ContactPage.css';
+import '../../css/ContactPage.css';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({

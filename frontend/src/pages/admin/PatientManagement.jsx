@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
 import Input from '../../components/common/Input';
 import Table from '../../components/common/Table';
-import '.../css/PatientManagement.css';
+import '../../css/PatientManagement.css';
 
 const PatientManagement = () => {
   const api = useApi();

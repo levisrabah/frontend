@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../common/Input';
 import { useApi } from '../../hooks/useApi';
-import './AppointmentForm.css';
+import '../../css/AppointmentForm.css';
 
 const AppointmentForm = ({ initialData, onSubmit, mode = 'create' }) => {
   const navigate = useNavigate();

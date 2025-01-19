@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './PatientDashboard.css';
+import '../../css/PatientDashboard.css';
 
 const PatientDashboard = () => {
   const [loading, setLoading] = useState(true);

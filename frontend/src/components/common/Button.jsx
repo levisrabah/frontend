@@ -1,6 +1,5 @@
 import React from 'react';
-import '.../css/Button.css';
-
+import '../../css/Button.css'; 
 const Button = ({
   children,
   variant = 'primary',

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '.../css/AuthPages.css';
+import '../../css/AuthPages.css';
 
 const LoginPage = () => {
   const navigate = useNavigate();
