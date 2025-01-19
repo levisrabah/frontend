@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import hospitalLogo from '../../images/Hospital Logo.jpeg';
 import '../../css/Header.css';
 
 const Header = ({ user, onLogout }) => {
@@ -74,7 +75,8 @@ const Header = ({ user, onLogout }) => {
     <header className={`mc-header ${isScrolled ? 'mc-header--scrolled' : ''}`}>
       <div className="mc-header__container">
         <Link to="/" className="mc-header__logo">
-          <img src="/logo.svg" alt="Hospital Logo" className="mc-header__logo-img" />
+        <img src={hospitalLogo} alt="Hospital Logo" className="mc-header__logo-img" />
+
           <span className="mc-header__logo-text">Medical Center</span>
         </Link>
 
