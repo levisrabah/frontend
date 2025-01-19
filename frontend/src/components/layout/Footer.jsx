@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import '../../css/Footer.css';
-import clinicLogo from '../../images/clinicLogo.jpeg';
 
+// Register icons
+library.add(faFacebook, faTwitter, faInstagram, faLinkedin);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -39,15 +43,15 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: '📱', label: 'Facebook', url: 'https://facebook.com' },
-    { icon: '🐦', label: 'Twitter', url: 'https://twitter.com' },
-    { icon: '📷', label: 'Instagram', url: 'https://instagram.com' },
-    { icon: '💼', label: 'LinkedIn', url: 'https://linkedin.com' },
+    { icon: faFacebook, label: 'Facebook', url: 'https://facebook.com' },
+    { icon: faTwitter, label: 'Twitter', url: 'https://twitter.com' },
+    { icon: faInstagram, label: 'Instagram', url: 'https://instagram.com' },
+    { icon: faLinkedin, label: 'LinkedIn', url: 'https://linkedin.com' },
   ];
 
   const contactInfo = {
-    address: '123 Medical Center Drive, Nairobi',
-    phone: '+254712345678',
+    address: '123 Medical Center Drive, Healthcare City, HC 12345',
+    phone: '+1 (555) 123-4567',
     email: 'info@medicalcenter.com',
     emergency: '911',
   };
@@ -59,7 +63,7 @@ const Footer = () => {
           {/* Logo and Contact Section */}
           <div className="mc-footer__brand">
             <Link to="/" className="mc-footer__logo">
-              <img src={clinicLogo} alt="Medical Center Logo" />
+              <img src="/logo.svg" alt="Medical Center Logo" />
               <span>Medical Center</span>
             </Link>
             
@@ -92,7 +96,7 @@ const Footer = () => {
                   className="mc-footer__social-link"
                   aria-label={social.label}
                 >
-                  {social.icon}
+                  <FontAwesomeIcon icon={social.icon} />
                 </a>
               ))}
             </div>
