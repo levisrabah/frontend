@@ -1,0 +1,334 @@
+/* PatientDashboard.css */
+.patient-dashboard {
+    padding: var(--spacing-6);
+    background-color: var(--neutral-50);
+    min-height: 100vh;
+  }
+  
+  /* Loading State */
+  .dashboard-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: var(--spacing-4);
+  }
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--neutral-200);
+    border-top-color: var(--primary-500);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Overview Section */
+  .dashboard-overview {
+    margin-bottom: var(--spacing-8);
+  }
+  
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-6);
+  }
+  
+  .overview-card {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .overview-card h3 {
+    font-size: var(--text-xl);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .next-appointment {
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .appointment-date {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--primary-600);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .appointment-time {
+    font-size: var(--text-base);
+    color: var(--neutral-600);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .appointment-type {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+    text-transform: capitalize;
+  }
+  
+  /* Prescription List */
+  .prescription-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-4) 0;
+  }
+  
+  .prescription-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-3) 0;
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .prescription-item:last-child {
+    border-bottom: none;
+  }
+  
+  .prescription-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .prescription-info strong {
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .prescription-info span {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  .prescription-date {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+  }
+  
+  /* Notification List */
+  .notification-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-4) 0;
+  }
+  
+  .notification-item {
+    display: flex;
+    gap: var(--spacing-3);
+    padding: var(--spacing-3) 0;
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .notification-item:last-child {
+    border-bottom: none;
+  }
+  
+  .notification-icon {
+    font-size: var(--text-xl);
+    flex-shrink: 0;
+  }
+  
+  .notification-content {
+    flex: 1;
+  }
+  
+  .notification-content p {
+    color: var(--neutral-700);
+    margin-bottom: var(--spacing-1);
+  }
+  
+  .notification-time {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+  }
+  
+  /* Quick Actions Section */
+  .dashboard-actions {
+    margin-bottom: var(--spacing-8);
+  }
+  
+  .dashboard-actions h3 {
+    font-size: var(--text-2xl);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-6);
+  }
+  
+  .actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--spacing-4);
+  }
+  
+  .action-card {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .action-icon {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .action-card h4 {
+    font-size: var(--text-lg);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .action-card p {
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  /* Medical Records Section */
+  .dashboard-records {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+  }
+  
+  .section-header h3 {
+    font-size: var(--text-2xl);
+    color: var(--neutral-900);
+  }
+  
+  .records-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  
+  .timeline-item {
+    display: flex;
+    gap: var(--spacing-4);
+    padding: var(--spacing-4);
+    border-left: 2px solid var(--primary-200);
+    position: relative;
+  }
+  
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: var(--spacing-4);
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-500);
+    border-radius: 50%;
+  }
+  
+  .timeline-date {
+    min-width: 120px;
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+  }
+  
+  .timeline-content {
+    flex: 1;
+  }
+  
+  .timeline-content h4 {
+    font-size: var(--text-lg);
+    color: var(--neutral-900);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .timeline-content .status {
+    display: inline-block;
+    padding: var(--spacing-1) var(--spacing-2);
+    background-color: var(--neutral-100);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    color: var(--neutral-700);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .timeline-content .notes {
+    color: var(--neutral-600);
+    font-size: var(--text-sm);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .overview-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .overview-card:last-child {
+      grid-column: span 2;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .patient-dashboard {
+      padding: var(--spacing-4);
+    }
+  
+    .overview-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .overview-card:last-child {
+      grid-column: auto;
+    }
+  
+    .actions-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .actions-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .timeline-item {
+      flex-direction: column;
+      gap: var(--spacing-2);
+    }
+  
+    .timeline-date {
+      min-width: auto;
+    }
+  
+    .section-header {
+      flex-direction: column;
+      gap: var(--spacing-3);
+      text-align: center;
+    }
+  }
