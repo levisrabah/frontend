@@ -1,504 +1,546 @@
-.admin-dashboard {
-    padding: var(--spacing-6);
-    background-color: var(--neutral-50);
-    min-height: 100vh;
+.adm-dashboard {
+  padding: var(--spacing-6);
+  background-color: var(--neutral-50);
+  min-height: 100vh;
+}
+
+/* Loading State */
+.adm-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: var(--spacing-4);
+}
+
+.adm-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--neutral-200);
+  border-top-color: var(--primary-500);
+  border-radius: 50%;
+  animation: admSpin 1s linear infinite;
+}
+
+@keyframes admSpin {
+  to {
+    transform: rotate(360deg);
   }
-  
-  /* Loading State */
-  .dashboard-loading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 60vh;
-    gap: var(--spacing-4);
-  }
-  
-  .loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid var(--neutral-200);
-    border-top-color: var(--primary-500);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  /* Stats Overview */
-  .dashboard-stats {
-    margin-bottom: var(--spacing-8);
-  }
-  
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-6);
-  }
-  
-  .stat-card {
-    background-color: white;
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-6);
-    box-shadow: var(--shadow-md);
-    display: flex;
-    gap: var(--spacing-4);
-  }
-  
-  .stat-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--text-2xl);
-  }
-  
-  .patients-icon {
-    background-color: var(--primary-50);
-    color: var(--primary-600);
-  }
-  
-  .staff-icon {
-    background-color: var(--success-light);
-    color: var(--success);
-  }
-  
-  .appointments-icon {
-    background-color: var(--info-light);
-    color: var(--info);
-  }
-  
-  .revenue-icon {
-    background-color: var(--warning-light);
-    color: var(--warning);
-  }
-  
-  .stat-info {
-    flex: 1;
-  }
-  
-  .stat-info h3 {
-    font-size: var(--text-sm);
-    color: var(--neutral-600);
-    margin-bottom: var(--spacing-2);
-  }
-  
-  .stat-value {
-    font-size: var(--text-2xl);
-    font-weight: var(--font-bold);
-    color: var(--neutral-900);
-    margin-bottom: var(--spacing-1);
-  }
-  
-  .stat-change {
-    font-size: var(--text-sm);
-    color: var(--neutral-600);
-  }
-  
-  .stat-change.increase {
-    color: var(--success);
-  }
-  
-  .stat-change.decrease {
-    color: var(--error);
-  }
-  
-  /* Alerts Section */
-  .alerts-section {
-    margin-bottom: var(--spacing-8);
-  }
-  
-  .alerts-container {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-4);
-  }
-  
-  .alert-item {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-4);
-    padding: var(--spacing-4) var(--spacing-6);
-    border-radius: var(--radius-lg);
-    background-color: white;
-    box-shadow: var(--shadow-md);
-  }
-  
-  .alert-item.high {
-    border-left: 4px solid var(--error);
-  }
-  
-  .alert-item.medium {
-    border-left: 4px solid var(--warning);
-  }
-  
-  .alert-item.low {
-    border-left: 4px solid var(--info);
-  }
-  
-  .alert-icon {
-    font-size: var(--text-2xl);
-  }
-  
-  .alert-content {
-    flex: 1;
-  }
-  
-  .alert-content h4 {
-    font-size: var(--text-base);
-    color: var(--neutral-900);
-    margin-bottom: var(--spacing-1);
-  }
-  
-  .alert-content p {
-    font-size: var(--text-sm);
-    color: var(--neutral-600);
-  }
-  
-  /* Dashboard Grid */
-  .dashboard-grid {
-    display: grid;
+}
+
+/* Stats Section */
+.adm-stats {
+  margin-bottom: var(--spacing-8);
+}
+
+.adm-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-6);
+}
+
+.adm-stat-card {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.adm-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-2xl);
+}
+
+.adm-patients-icon {
+  background-color: var(--primary-50);
+  color: var(--primary-600);
+}
+
+.adm-staff-icon {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.adm-appointments-icon {
+  background-color: var(--info-light);
+  color: var(--info);
+}
+
+.adm-revenue-icon {
+  background-color: var(--warning-light);
+  color: var(--warning);
+}
+
+.adm-stat-info {
+  flex: 1;
+}
+
+.adm-stat-info h3 {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin-bottom: var(--spacing-2);
+}
+
+.adm-stat-value {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-900);
+  margin-bottom: var(--spacing-1);
+}
+
+.adm-stat-change {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+.adm-stat-change.adm-increase {
+  color: var(--success);
+}
+
+.adm-stat-change.adm-decrease {
+  color: var(--error);
+}
+
+/* Alerts Section */
+.adm-alerts {
+  margin-bottom: var(--spacing-8);
+}
+
+.adm-alerts-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.adm-alert-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-lg);
+  background-color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.adm-alert-item.adm-high {
+  border-left: 4px solid var(--error);
+}
+
+.adm-alert-item.adm-medium {
+  border-left: 4px solid var(--warning);
+}
+
+.adm-alert-item.adm-low {
+  border-left: 4px solid var(--info);
+}
+
+.adm-alert-icon {
+  font-size: var(--text-2xl);
+}
+
+.adm-alert-content {
+  flex: 1;
+}
+
+.adm-alert-content h4 {
+  font-size: var(--text-base);
+  color: var(--neutral-900);
+  margin-bottom: var(--spacing-1);
+}
+
+.adm-alert-content p {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+/* Dashboard Grid */
+.adm-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+}
+
+/* Section Styles */
+.adm-section {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-md);
+}
+
+.adm-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.adm-section-header h2 {
+  font-size: var(--text-xl);
+  color: var(--neutral-900);
+}
+
+/* Staff List */
+.adm-staff-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.adm-staff-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-lg);
+}
+
+.adm-staff-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary-100);
+  color: var(--primary-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+}
+
+.adm-staff-info {
+  flex: 1;
+}
+
+.adm-staff-info h4 {
+  font-size: var(--text-base);
+  color: var(--neutral-900);
+  margin-bottom: var(--spacing-1);
+}
+
+.adm-staff-info p {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin-bottom: var(--spacing-2);
+}
+
+.adm-staff-meta {
+  display: flex;
+  gap: var(--spacing-4);
+  font-size: var(--text-sm);
+}
+
+.adm-rating {
+  color: var(--warning);
+}
+
+.adm-department {
+  color: var(--primary-600);
+}
+
+/* Appointments List */
+.adm-appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.adm-appointment-card {
+  padding: var(--spacing-4);
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-lg);
+}
+
+.adm-appointment-time {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin-bottom: var(--spacing-2);
+}
+
+.adm-appointment-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.adm-patient-info h4 {
+  font-size: var(--text-base);
+  color: var(--neutral-900);
+  margin-bottom: var(--spacing-1);
+}
+
+.adm-patient-info p {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+.adm-appointment-type {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--text-sm);
+}
+
+.adm-virtual-badge {
+  background-color: var(--primary-50);
+  color: var(--primary-600);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
+}
+
+/* Analytics Section */
+.adm-analytics {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--spacing-8);
+}
+
+.adm-analytics-controls {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.adm-time-select {
+  padding: var(--spacing-2) var(--spacing-4);
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-md);
+  background-color: white;
+  color: var(--neutral-700);
+}
+
+.adm-analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-6);
+}
+
+.adm-analytics-card {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.adm-analytics-card h3 {
+  font-size: var(--text-lg);
+  color: var(--neutral-900);
+  margin-bottom: var(--spacing-6);
+}
+
+.adm-chart-container {
+  height: 300px;
+  position: relative;
+}
+
+/* Department Distribution */
+.adm-dept-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.adm-dept-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.adm-dept-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+}
+
+.adm-dept-name {
+  color: var(--neutral-700);
+}
+
+.adm-dept-count {
+  font-weight: var(--font-medium);
+  color: var(--neutral-900);
+}
+
+.adm-progress-bar {
+  height: 8px;
+  background-color: var(--neutral-100);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.adm-progress {
+  height: 100%;
+  background-color: var(--primary-500);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+/* Revenue Trend */
+.adm-revenue-trend {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: var(--spacing-6);
+}
+
+.adm-trend-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 60px;
+}
+
+.adm-bar {
+  width: 40px;
+  background-color: var(--primary-500);
+  border-radius: var(--radius-md);
+  transition: height 0.3s ease;
+  position: relative;
+  min-height: 4px;
+}
+
+.adm-bar:hover {
+  background-color: var(--primary-600);
+}
+
+.adm-bar-value {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--text-xs);
+  color: var(--neutral-700);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.adm-bar:hover .adm-bar-value {
+  opacity: 1;
+}
+
+.adm-bar-label {
+  margin-top: var(--spacing-2);
+  font-size: var(--text-xs);
+  color: var(--neutral-600);
+}
+
+/* Quick Actions */
+.adm-quick-actions {
+  margin-bottom: var(--spacing-8);
+}
+
+.adm-quick-actions h2 {
+  font-size: var(--text-2xl);
+  color: var(--neutral-900);
+  margin-bottom: var(--spacing-6);
+}
+
+.adm-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-6);
+}
+
+.adm-action-card {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-md);
+}
+
+.adm-action-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.adm-action-icon {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--spacing-4);
+}
+
+.adm-action-card h3 {
+  font-size: var(--text-lg);
+  color: var(--neutral-900);
+  margin-bottom: var(--spacing-2);
+}
+
+.adm-action-card p {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .adm-stats-grid,
+  .adm-actions-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-6);
-    margin-bottom: var(--spacing-8);
   }
-  
-  /* Staff List */
-  .staff-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-4);
+
+  .adm-analytics-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .staff-card {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-4);
+}
+
+@media (max-width: 768px) {
+  .adm-dashboard {
     padding: var(--spacing-4);
-    background-color: white;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
   }
-  
-  .staff-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-full);
-    background-color: var(--primary-100);
-    color: var(--primary-600);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
+
+  .adm-dashboard-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .staff-info {
-    flex: 1;
-  }
-  
-  .staff-info h4 {
-    font-size: var(--text-base);
-    color: var(--neutral-900);
-    margin-bottom: var(--spacing-1);
-  }
-  
-  .staff-info p {
-    font-size: var(--text-sm);
-    color: var(--neutral-600);
-    margin-bottom: var(--spacing-2);
-  }
-  
-  .staff-meta {
-    display: flex;
-    gap: var(--spacing-4);
-    font-size: var(--text-sm);
-  }
-  
-  .staff-meta span {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-1);
-  }
-  
-  .rating {
-    color: var(--warning);
-  }
-  
-  .department {
-    color: var(--primary-600);
-  }
-  
-  /* Analytics Section */
-  .analytics-section {
-    background-color: white;
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-6);
-    box-shadow: var(--shadow-md);
-    margin-bottom: var(--spacing-8);
-  }
-  
-  .analytics-controls {
-    display: flex;
-    gap: var(--spacing-4);
-  }
-  
-  .time-range-select {
-    padding: var(--spacing-2) var(--spacing-4);
-    border: 1px solid var(--neutral-300);
-    border-radius: var(--radius-md);
-    background-color: white;
-    color: var(--neutral-700);
-  }
-  
-  .analytics-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-6);
-    margin-top: var(--spacing-6);
-  }
-  
-  .analytics-card {
-    background-color: white;
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-6);
-    box-shadow: var(--shadow-sm);
-  }
-  
-  .analytics-card h3 {
-    font-size: var(--text-lg);
-    color: var(--neutral-900);
-    margin-bottom: var(--spacing-6);
-  }
-  
-  .chart-container {
-    height: 300px;
-    position: relative;
-  }
-  
-  /* Department Distribution Chart */
-  .department-distribution {
-    display: flex;
+
+  .adm-alert-item {
     flex-direction: column;
-    gap: var(--spacing-4);
-  }
-  
-  .distribution-item {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-2);
-  }
-  
-  .department-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: var(--text-sm);
-  }
-  
-  .dept-name {
-    color: var(--neutral-700);
-  }
-  
-  .dept-count {
-    font-weight: var(--font-medium);
-    color: var(--neutral-900);
-  }
-  
-  .progress-bar {
-    height: 8px;
-    background-color: var(--neutral-100);
-    border-radius: var(--radius-full);
-    overflow: hidden;
-  }
-  
-  .progress {
-    height: 100%;
-    background-color: var(--primary-500);
-    border-radius: var(--radius-full);
-    transition: width 0.3s ease;
-  }
-  
-  /* Revenue Trend Chart */
-  .revenue-trend {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    height: 100%;
-    padding-bottom: var(--spacing-6);
-  }
-  
-  .trend-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 60px;
-  }
-  
-  .bar {
-    width: 40px;
-    background-color: var(--primary-500);
-    border-radius: var(--radius-md);
-    transition: height 0.3s ease;
-    position: relative;
-    min-height: 4px;
-  }
-  
-  .bar:hover {
-    background-color: var(--primary-600);
-  }
-  
-  .bar-value {
-    position: absolute;
-    top: -24px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: var(--text-xs);
-    color: var(--neutral-700);
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-  }
-  
-  .bar:hover .bar-value {
-    opacity: 1;
-  }
-  
-  .bar-label {
-    margin-top: var(--spacing-2);
-    font-size: var(--text-xs);
-    color: var(--neutral-600);
-  }
-  
-  /* Quick Actions Section */
-  .quick-actions-section {
-    margin-bottom: var(--spacing-8);
-  }
-  
-  .quick-actions-section h2 {
-    font-size: var(--text-2xl);
-    color: var(--neutral-900);
-    margin-bottom: var(--spacing-6);
-  }
-  
-  .actions-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-6);
-  }
-  
-  .action-card {
-    background-color: white;
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-6);
     text-align: center;
-    text-decoration: none;
-    color: inherit;
-    transition: var(--transition-base);
-    box-shadow: var(--shadow-md);
   }
-  
-  .action-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+
+  .adm-analytics-controls {
+    flex-direction: column;
   }
-  
-  .action-icon {
-    font-size: var(--text-4xl);
-    margin-bottom: var(--spacing-4);
+
+  .adm-time-select {
+    width: 100%;
   }
-  
-  .action-card h3 {
-    font-size: var(--text-lg);
-    color: var(--neutral-900);
-    margin-bottom: var(--spacing-2);
+}
+
+@media (max-width: 480px) {
+  .adm-stats-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .action-card p {
-    font-size: var(--text-sm);
-    color: var(--neutral-600);
+
+  .adm-stat-card {
+    flex-direction: column;
+    text-align: center;
   }
-  
-  /* Dashboard Section Common Styles */
-  .dashboard-section {
-    background-color: white;
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-6);
-    height: 100%;
-    box-shadow: var(--shadow-md);
+
+  .adm-actions-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--spacing-6);
+
+  .adm-section-header {
+    flex-direction: column;
+    gap: var(--spacing-3);
+    text-align: center;
   }
-  
-  .section-header h2 {
-    font-size: var(--text-xl);
-    color: var(--neutral-900);
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 1200px) {
-    .stats-grid,
-    .actions-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  
-    .analytics-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .admin-dashboard {
-      padding: var(--spacing-4);
-    }
-  
-    .dashboard-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .alert-item {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .analytics-controls {
-      flex-direction: column;
-      gap: var(--spacing-2);
-    }
-  
-    .time-range-select {
-      width: 100%;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .stats-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .stat-card {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .actions-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .section-header {
-      flex-direction: column;
-      gap: var(--spacing-3);
-      text-align: center;
-    }
-  }
+}

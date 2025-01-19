@@ -51,43 +51,43 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer">
-      <div className="footer-main">
-        <div className="footer-content">
+    <footer className="mc-footer">
+      <div className="mc-footer__main">
+        <div className="mc-footer__content">
           {/* Logo and Contact Section */}
-          <div className="footer-brand">
-            <Link to="/" className="footer-logo">
+          <div className="mc-footer__brand">
+            <Link to="/" className="mc-footer__logo">
               <img src="/logo.svg" alt="Medical Center Logo" />
               <span>Medical Center</span>
             </Link>
             
-            <div className="footer-contact">
-              <div className="contact-item">
+            <div className="mc-footer__contact">
+              <div className="mc-footer__contact-item">
                 <strong>Address:</strong>
                 <p>{contactInfo.address}</p>
               </div>
-              <div className="contact-item">
+              <div className="mc-footer__contact-item">
                 <strong>Phone:</strong>
                 <p>{contactInfo.phone}</p>
               </div>
-              <div className="contact-item">
+              <div className="mc-footer__contact-item">
                 <strong>Email:</strong>
                 <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
               </div>
-              <div className="contact-item emergency">
+              <div className="mc-footer__contact-item mc-footer__contact-item--emergency">
                 <strong>Emergency:</strong>
                 <p>{contactInfo.emergency}</p>
               </div>
             </div>
 
-            <div className="footer-social">
+            <div className="mc-footer__social">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link"
+                  className="mc-footer__social-link"
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -97,8 +97,8 @@ const Footer = () => {
           </div>
 
           {/* Links Sections */}
-          <div className="footer-links">
-            <div className="footer-links-group">
+          <div className="mc-footer__links">
+            <div className="mc-footer__links-group">
               <h3>Company</h3>
               <ul>
                 {footerLinks.company.map((link) => (
@@ -109,7 +109,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="footer-links-group">
+            <div className="mc-footer__links-group">
               <h3>Services</h3>
               <ul>
                 {footerLinks.services.map((link) => (
@@ -120,7 +120,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="footer-links-group">
+            <div className="mc-footer__links-group">
               <h3>For Patients</h3>
               <ul>
                 {footerLinks.patients.map((link) => (
@@ -131,7 +131,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="footer-links-group">
+            <div className="mc-footer__links-group">
               <h3>Legal</h3>
               <ul>
                 {footerLinks.legal.map((link) => (
@@ -145,10 +145,10 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Subscription */}
-        <div className="footer-newsletter">
+        <div className="mc-footer__newsletter">
           <h3>Stay Updated</h3>
           <p>Subscribe to our newsletter for health tips and updates.</p>
-          <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
+          <form className="mc-footer__newsletter-form" onSubmit={(e) => e.preventDefault()}>
             <input
               type="email"
               placeholder="Enter your email"
@@ -160,10 +160,10 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="footer-bottom">
-        <div className="footer-bottom-content">
+      <div className="mc-footer__bottom">
+        <div className="mc-footer__bottom-content">
           <p>© {currentYear} Medical Center. All rights reserved.</p>
-          <div className="footer-bottom-links">
+          <div className="mc-footer__bottom-links">
             <Link to="/privacy">Privacy</Link>
             <Link to="/terms">Terms</Link>
             <Link to="/sitemap">Sitemap</Link>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useApi } from '../../hooks/useApi';
-import '../../css/Reports.css';
+// import '../../css/Reports.css';
 
 const Reports = () => {
   const api = useApi();

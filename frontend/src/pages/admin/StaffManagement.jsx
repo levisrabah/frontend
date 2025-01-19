@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
 import StaffInfo from '../../components/shared/StaffInfo';
 import Input from '../../components/common/Input';
-import '../../css/StaffManagement.css';
+// import '../../css/StaffManagement.css';
 
 const StaffManagement = () => {
   const api = useApi();

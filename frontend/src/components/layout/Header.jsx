@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import '../../css//Header.css';
+import '../../css/Header.css';
 
 const Header = ({ user, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +10,6 @@ const Header = ({ user, onLogout }) => {
   const navigate = useNavigate();
   const userMenuRef = useRef(null);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -20,7 +19,6 @@ const Header = ({ user, onLogout }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
@@ -32,12 +30,10 @@ const Header = ({ user, onLogout }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close mobile menu on navigation
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
 
-  // Navigation items based on user role
   const getNavigationItems = () => {
     const commonItems = [
       { label: 'Home', path: '/' },
@@ -75,32 +71,29 @@ const Header = ({ user, onLogout }) => {
   const navigationItems = getNavigationItems();
 
   return (
-    <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
-      <div className="header-container">
-        {/* Logo */}
-        <Link to="/" className="header-logo">
-          <img src="/logo.svg" alt="Hospital Logo" className="header-logo-img" />
-          <span className="header-logo-text">Medical Center</span>
+    <header className={`mc-header ${isScrolled ? 'mc-header--scrolled' : ''}`}>
+      <div className="mc-header__container">
+        <Link to="/" className="mc-header__logo">
+          <img src="/logo.svg" alt="Hospital Logo" className="mc-header__logo-img" />
+          <span className="mc-header__logo-text">Medical Center</span>
         </Link>
 
-        {/* Mobile Menu Button */}
         <button
-          className={`header-menu-button ${isMenuOpen ? 'is-active' : ''}`}
+          className={`mc-header__menu-btn ${isMenuOpen ? 'is-active' : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-expanded={isMenuOpen}
           aria-label="Toggle menu"
         >
-          <span className="menu-icon"></span>
+          <span className="mc-header__menu-icon"></span>
         </button>
 
-        {/* Navigation */}
-        <nav className={`header-nav ${isMenuOpen ? 'is-open' : ''}`}>
-          <ul className="nav-list">
+        <nav className={`mc-header__nav ${isMenuOpen ? 'is-open' : ''}`}>
+          <ul className="mc-header__nav-list">
             {navigationItems.map((item) => (
-              <li key={item.path} className="nav-item">
+              <li key={item.path} className="mc-header__nav-item">
                 <Link
                   to={item.path}
-                  className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
+                  className={`mc-header__nav-link ${location.pathname === item.path ? 'is-active' : ''}`}
                 >
                   {item.label}
                 </Link>
@@ -109,42 +102,41 @@ const Header = ({ user, onLogout }) => {
           </ul>
         </nav>
 
-        {/* User Menu */}
-        <div className="header-user" ref={userMenuRef}>
+        <div className="mc-header__user" ref={userMenuRef}>
           {user ? (
             <>
               <button
-                className="user-menu-button"
+                className="mc-header__user-btn"
                 onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                 aria-expanded={isUserMenuOpen}
               >
-                <div className="user-avatar">
+                <div className="mc-header__user-avatar">
                   {user.avatar ? (
                     <img src={user.avatar} alt={user.name} />
                   ) : (
                     <span>{user.name.charAt(0)}</span>
                   )}
                 </div>
-                <span className="user-name">{user.name}</span>
+                <span className="mc-header__user-name">{user.name}</span>
               </button>
 
               {isUserMenuOpen && (
-                <div className="user-menu">
-                  <div className="user-menu-header">
+                <div className="mc-header__user-menu">
+                  <div className="mc-header__menu-header">
                     <strong>{user.name}</strong>
                     <small>{user.email}</small>
                   </div>
-                  <div className="user-menu-items">
-                    <Link to="/profile" className="user-menu-item">
-                      <span className="icon">👤</span>
+                  <div className="mc-header__menu-items">
+                    <Link to="/profile" className="mc-header__menu-item">
+                      <span className="mc-header__menu-icon">👤</span>
                       Profile
                     </Link>
-                    <Link to="/settings" className="user-menu-item">
-                      <span className="icon">⚙️</span>
+                    <Link to="/settings" className="mc-header__menu-item">
+                      <span className="mc-header__menu-icon">⚙️</span>
                       Settings
                     </Link>
-                    <button onClick={onLogout} className="user-menu-item">
-                      <span className="icon">🚪</span>
+                    <button onClick={onLogout} className="mc-header__menu-item">
+                      <span className="mc-header__menu-icon">🚪</span>
                       Logout
                     </button>
                   </div>
@@ -152,11 +144,11 @@ const Header = ({ user, onLogout }) => {
               )}
             </>
           ) : (
-            <div className="auth-buttons">
-              <Link to="/login" className="btn btn-ghost">
+            <div className="mc-header__auth-buttons">
+              <Link to="/login" className="mc-btn mc-btn--ghost">
                 Login
               </Link>
-              <Link to="/signup" className="btn btn-primary">
+              <Link to="/signup" className="mc-btn mc-btn--primary">
                 Sign Up
               </Link>
             </div>

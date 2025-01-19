@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../../css/AuthPages.css';
+import '../../css/Signup.css';
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -119,11 +119,6 @@ const SignupPage = () => {
         throw new Error(data.message || 'Registration failed');
       }
       
-      // Store token and user info
-      localStorage.setItem('token', data.access_token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-      
-      // Show success message and redirect to login
       navigate('/login', {
         state: { message: 'Registration successful! Please sign in.' }
       });
@@ -138,26 +133,38 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-container">
-        <div className="auth-content">
-          <div className="auth-header">
-            <Link to="/" className="auth-logo">
+    <div className="signup-page">
+      <div className="signup-container">
+        <div className="signup-content">
+          <div className="signup-header">
+            <Link to="/" className="signup-logo">
               <img src="/logo.svg" alt="Medical Center Logo" />
             </Link>
             <h1>Create Account</h1>
             <p>Join our healthcare community</p>
           </div>
+
+          <div className="signup-steps">
+            <div className={`signup-step ${step >= 1 ? 'active' : ''}`}>
+              <div className="signup-step-number">1</div>
+              <div className="signup-step-label">Account Info</div>
+            </div>
+            <div className="signup-step-line"></div>
+            <div className={`signup-step ${step === 2 ? 'active' : ''}`}>
+              <div className="signup-step-number">2</div>
+              <div className="signup-step-label">Personal Info</div>
+            </div>
+          </div>
           
-          <form onSubmit={handleSubmit} className="auth-form">
+          <form onSubmit={handleSubmit} className="signup-form">
             {errors.submit && (
-              <div className="form-error">{errors.submit}</div>
+              <div className="signup-error">{errors.submit}</div>
             )}
             
             {step === 1 ? (
               <>
-                <div className="form-row">
-                  <div className="form-group">
+                <div className="signup-form-row">
+                  <div className="signup-form-group">
                     <label htmlFor="firstName">First Name</label>
                     <input
                       type="text"
@@ -165,15 +172,15 @@ const SignupPage = () => {
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                      className={errors.firstName ? 'error' : ''}
+                      className={`signup-input ${errors.firstName ? 'signup-input--error' : ''}`}
                       placeholder="Enter your first name"
                     />
                     {errors.firstName && (
-                      <span className="error-message">{errors.firstName}</span>
+                      <span className="signup-error-message">{errors.firstName}</span>
                     )}
                   </div>
                   
-                  <div className="form-group">
+                  <div className="signup-form-group">
                     <label htmlFor="lastName">Last Name</label>
                     <input
                       type="text"
@@ -181,16 +188,16 @@ const SignupPage = () => {
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
-                      className={errors.lastName ? 'error' : ''}
+                      className={`signup-input ${errors.lastName ? 'signup-input--error' : ''}`}
                       placeholder="Enter your last name"
                     />
                     {errors.lastName && (
-                      <span className="error-message">{errors.lastName}</span>
+                      <span className="signup-error-message">{errors.lastName}</span>
                     )}
                   </div>
                 </div>
                 
-                <div className="form-group">
+                <div className="signup-form-group">
                   <label htmlFor="email">Email</label>
                   <input
                     type="email"
@@ -198,16 +205,16 @@ const SignupPage = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={errors.email ? 'error' : ''}
+                    className={`signup-input ${errors.email ? 'signup-input--error' : ''}`}
                     placeholder="Enter your email"
                     autoComplete="email"
                   />
                   {errors.email && (
-                    <span className="error-message">{errors.email}</span>
+                    <span className="signup-error-message">{errors.email}</span>
                   )}
                 </div>
                 
-                <div className="form-group">
+                <div className="signup-form-group">
                   <label htmlFor="password">Password</label>
                   <input
                     type="password"
@@ -215,16 +222,16 @@ const SignupPage = () => {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    className={errors.password ? 'error' : ''}
+                    className={`signup-input ${errors.password ? 'signup-input--error' : ''}`}
                     placeholder="Create a password"
                     autoComplete="new-password"
                   />
                   {errors.password && (
-                    <span className="error-message">{errors.password}</span>
+                    <span className="signup-error-message">{errors.password}</span>
                   )}
                 </div>
                 
-                <div className="form-group">
+                <div className="signup-form-group">
                   <label htmlFor="confirmPassword">Confirm Password</label>
                   <input
                     type="password"
@@ -232,18 +239,18 @@ const SignupPage = () => {
                     name="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={handleChange}
-                    className={errors.confirmPassword ? 'error' : ''}
+                    className={`signup-input ${errors.confirmPassword ? 'signup-input--error' : ''}`}
                     placeholder="Confirm your password"
                     autoComplete="new-password"
                   />
                   {errors.confirmPassword && (
-                    <span className="error-message">{errors.confirmPassword}</span>
+                    <span className="signup-error-message">{errors.confirmPassword}</span>
                   )}
                 </div>
               </>
             ) : (
               <>
-                <div className="form-group">
+                <div className="signup-form-group">
                   <label htmlFor="phone">Phone Number</label>
                   <input
                     type="tel"
@@ -251,15 +258,15 @@ const SignupPage = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className={errors.phone ? 'error' : ''}
+                    className={`signup-input ${errors.phone ? 'signup-input--error' : ''}`}
                     placeholder="Enter your phone number"
                   />
                   {errors.phone && (
-                    <span className="error-message">{errors.phone}</span>
+                    <span className="signup-error-message">{errors.phone}</span>
                   )}
                 </div>
                 
-                <div className="form-group">
+                <div className="signup-form-group">
                   <label htmlFor="dateOfBirth">Date of Birth</label>
                   <input
                     type="date"
@@ -267,21 +274,21 @@ const SignupPage = () => {
                     name="dateOfBirth"
                     value={formData.dateOfBirth}
                     onChange={handleChange}
-                    className={errors.dateOfBirth ? 'error' : ''}
+                    className={`signup-input ${errors.dateOfBirth ? 'signup-input--error' : ''}`}
                   />
                   {errors.dateOfBirth && (
-                    <span className="error-message">{errors.dateOfBirth}</span>
+                    <span className="signup-error-message">{errors.dateOfBirth}</span>
                   )}
                 </div>
                 
-                <div className="form-group">
+                <div className="signup-form-group">
                   <label htmlFor="gender">Gender</label>
                   <select
                     id="gender"
                     name="gender"
                     value={formData.gender}
                     onChange={handleChange}
-                    className={errors.gender ? 'error' : ''}
+                    className={`signup-select ${errors.gender ? 'signup-select--error' : ''}`}
                   >
                     <option value="">Select gender</option>
                     <option value="male">Male</option>
@@ -289,17 +296,17 @@ const SignupPage = () => {
                     <option value="other">Other</option>
                   </select>
                   {errors.gender && (
-                    <span className="error-message">{errors.gender}</span>
+                    <span className="signup-error-message">{errors.gender}</span>
                   )}
                 </div>
               </>
             )}
             
-            <div className="form-buttons">
+            <div className="signup-form-buttons">
               {step === 2 && (
                 <button
                   type="button"
-                  className="auth-button secondary"
+                  className="signup-back-btn"
                   onClick={handleBack}
                 >
                   Back
@@ -307,7 +314,7 @@ const SignupPage = () => {
               )}
               <button
                 type="submit"
-                className="auth-submit"
+                className="signup-submit-btn"
                 disabled={isLoading}
               >
                 {isLoading
@@ -316,20 +323,20 @@ const SignupPage = () => {
                   ? 'Next'
                   : 'Create Account'}
               </button>
-              </div>
+            </div>
           </form>
           
-          <div className="auth-footer">
+          <div className="signup-footer">
             <p>
               Already have an account?{' '}
-              <Link to="/login">Sign in here</Link>
+              <Link to="/login" className="signup-link">Sign in here</Link>
             </p>
           </div>
         </div>
         
-        <div className="auth-image">
+        <div className="signup-image">
           <img src="/images/signup-illustration.svg" alt="Healthcare illustration" />
-          <div className="image-overlay">
+          <div className="signup-image-overlay">
             <h2>Join Our Community</h2>
             <p>Get access to quality healthcare services and manage your health journey.</p>
           </div>

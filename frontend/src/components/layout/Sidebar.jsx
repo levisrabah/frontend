@@ -15,23 +15,23 @@ const SidebarItem = ({ item, isCollapsed, isNested = false }) => {
   }, [location.pathname, hasChildren, item.children]);
 
   return (
-    <li className={`sidebar-item ${isNested ? 'nested' : ''}`}>
+    <li className={`sdb-item ${isNested ? 'sdb-nested' : ''}`}>
       {hasChildren ? (
         <>
           <button
-            className={`sidebar-link ${isOpen ? 'active' : ''}`}
+            className={`sdb-link ${isOpen ? 'sdb-active' : ''}`}
             onClick={() => setIsOpen(!isOpen)}
           >
-            {item.icon && <span className="sidebar-icon">{item.icon}</span>}
+            {item.icon && <span className="sdb-icon">{item.icon}</span>}
             {!isCollapsed && (
               <>
-                <span className="sidebar-label">{item.label}</span>
-                <span className={`sidebar-arrow ${isOpen ? 'open' : ''}`}>▾</span>
+                <span className="sdb-label">{item.label}</span>
+                <span className={`sdb-arrow ${isOpen ? 'sdb-arrow-open' : ''}`}>▾</span>
               </>
             )}
           </button>
           {isOpen && (
-            <ul className="sidebar-submenu">
+            <ul className="sdb-submenu">
               {item.children.map((child, index) => (
                 <SidebarItem
                   key={index}
@@ -47,12 +47,12 @@ const SidebarItem = ({ item, isCollapsed, isNested = false }) => {
         <NavLink
           to={item.path}
           className={({ isActive }) =>
-            `sidebar-link ${isActive ? 'active' : ''}`
+            `sdb-link ${isActive ? 'sdb-active' : ''}`
           }
           title={isCollapsed ? item.label : undefined}
         >
-          {item.icon && <span className="sidebar-icon">{item.icon}</span>}
-          {!isCollapsed && <span className="sidebar-label">{item.label}</span>}
+          {item.icon && <span className="sdb-icon">{item.icon}</span>}
+          {!isCollapsed && <span className="sdb-label">{item.label}</span>}
         </NavLink>
       )}
     </li>
@@ -77,7 +77,7 @@ const Sidebar = ({
   };
 
   const handleClickOutside = (e) => {
-    if (isMobileOpen && !e.target.closest('.sidebar')) {
+    if (isMobileOpen && !e.target.closest('.sdb-container')) {
       setIsMobileOpen(false);
     }
   };
@@ -89,16 +89,16 @@ const Sidebar = ({
 
   return (
     <>
-      <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''} ${className}`}>
-        <div className="sidebar-header">
+      <aside className={`sdb-container ${isCollapsed ? 'sdb-collapsed' : ''} ${className}`}>
+        <div className="sdb-header">
           {headerComponent && (
-            <div className="sidebar-header-content">
+            <div className="sdb-header-content">
               {headerComponent(isCollapsed)}
             </div>
           )}
           {isCollapsible && (
             <button
-              className="sidebar-collapse-btn"
+              className="sdb-collapse-btn"
               onClick={handleCollapse}
               aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             >
@@ -107,8 +107,8 @@ const Sidebar = ({
           )}
         </div>
 
-        <nav className="sidebar-nav">
-          <ul className="sidebar-menu">
+        <nav className="sdb-nav">
+          <ul className="sdb-menu">
             {items.map((item, index) => (
               <SidebarItem
                 key={index}
@@ -120,7 +120,7 @@ const Sidebar = ({
         </nav>
 
         {footerComponent && (
-          <div className="sidebar-footer">
+          <div className="sdb-footer">
             {footerComponent(isCollapsed)}
           </div>
         )}
@@ -128,11 +128,11 @@ const Sidebar = ({
 
       {/* Mobile Toggle Button */}
       <button
-        className="sidebar-mobile-toggle"
+        className="sdb-mobile-toggle"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
         aria-label="Toggle mobile menu"
       >
-        <span className="toggle-icon"></span>
+        <span className="sdb-toggle-icon"></span>
       </button>
     </>
   );

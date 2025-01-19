@@ -1,4 +1,3 @@
-//ContactPage.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../css/ContactPage.css';
@@ -15,6 +14,29 @@ const ContactPage = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const departments = [
+    {
+      name: 'General Inquiries',
+      contact: '(555) 123-4567',
+      email: 'info@medicalcenter.com'
+    },
+    {
+      name: 'Appointments',
+      contact: '(555) 234-5678',
+      email: 'appointments@medicalcenter.com'
+    },
+    {
+      name: 'Billing',
+      contact: '(555) 345-6789',
+      email: 'billing@medicalcenter.com'
+    },
+    {
+      name: 'Medical Records',
+      contact: '(555) 456-7890',
+      email: 'records@medicalcenter.com'
+    }
+  ];
 
   const locations = [
     {
@@ -57,35 +79,13 @@ const ContactPage = () => {
     }
   ];
 
-  const departments = [
-    {
-      name: 'General Inquiries',
-      contact: '(555) 123-4567',
-      email: 'info@medicalcenter.com'
-    },
-    {
-      name: 'Appointments',
-      contact: '(555) 234-5678',
-      email: 'appointments@medicalcenter.com'
-    },
-    {
-      name: 'Billing',
-      contact: '(555) 345-6789',
-      email: 'billing@medicalcenter.com'
-    },
-    {
-      name: 'Medical Records',
-      contact: '(555) 456-7890',
-      email: 'records@medicalcenter.com'
-    }
-  ];
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -157,23 +157,21 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="contact-page">
+    <div className="cnt-page">
       {/* Hero Section */}
-      <section className="contact-hero">
-        <div className="container">
-          <div className="contact-hero-content">
-            <h1>Contact Us</h1>
-            <p>Get in touch with our healthcare team</p>
-          </div>
+      <section className="cnt-hero">
+        <div className="cnt-hero-content">
+          <h1>Contact Us</h1>
+          <p>Get in touch with our healthcare team</p>
         </div>
       </section>
 
       {/* Emergency Notice */}
-      <section className="emergency-notice">
-        <div className="container">
-          <div className="notice-content">
-            <div className="notice-icon">🚨</div>
-            <div className="notice-text">
+      <section className="cnt-emergency">
+        <div className="cnt-container">
+          <div className="cnt-notice">
+            <div className="cnt-notice-icon">🚨</div>
+            <div className="cnt-notice-text">
               <h2>For Medical Emergencies</h2>
               <p>Please dial <strong>911</strong> or visit the nearest emergency room</p>
             </div>
@@ -185,28 +183,28 @@ const ContactPage = () => {
       </section>
 
       {/* Main Content */}
-      <section className="contact-content">
-        <div className="container">
-          <div className="contact-grid">
+      <section className="cnt-content">
+        <div className="cnt-container">
+          <div className="cnt-grid">
             {/* Contact Form */}
-            <div className="contact-form-container">
-              <div className="form-header">
+            <div className="cnt-form-wrapper">
+              <div className="cnt-form-header">
                 <h2>Send us a Message</h2>
                 <p>Fill out the form below and we'll get back to you soon</p>
               </div>
 
-              <form onSubmit={handleSubmit} className="contact-form">
+              <form onSubmit={handleSubmit} className="cnt-form">
                 {errors.submit && (
-                  <div className="form-error">{errors.submit}</div>
+                  <div className="cnt-form-error">{errors.submit}</div>
                 )}
 
                 {submitSuccess && (
-                  <div className="form-success">
+                  <div className="cnt-form-success">
                     Message sent successfully! We'll respond soon.
                   </div>
                 )}
 
-                <div className="form-group">
+                <div className="cnt-form-group">
                   <label htmlFor="name">Full Name *</label>
                   <input
                     type="text"
@@ -217,11 +215,11 @@ const ContactPage = () => {
                     className={errors.name ? 'error' : ''}
                   />
                   {errors.name && (
-                    <span className="error-message">{errors.name}</span>
+                    <span className="cnt-error-text">{errors.name}</span>
                   )}
                 </div>
 
-                <div className="form-group">
+                <div className="cnt-form-group">
                   <label htmlFor="email">Email Address *</label>
                   <input
                     type="email"
@@ -232,11 +230,11 @@ const ContactPage = () => {
                     className={errors.email ? 'error' : ''}
                   />
                   {errors.email && (
-                    <span className="error-message">{errors.email}</span>
+                    <span className="cnt-error-text">{errors.email}</span>
                   )}
                 </div>
 
-                <div className="form-group">
+                <div className="cnt-form-group">
                   <label htmlFor="phone">Phone Number</label>
                   <input
                     type="tel"
@@ -247,11 +245,11 @@ const ContactPage = () => {
                     className={errors.phone ? 'error' : ''}
                   />
                   {errors.phone && (
-                    <span className="error-message">{errors.phone}</span>
+                    <span className="cnt-error-text">{errors.phone}</span>
                   )}
                 </div>
 
-                <div className="form-group">
+                <div className="cnt-form-group">
                   <label htmlFor="preferredContact">Preferred Contact Method</label>
                   <select
                     id="preferredContact"
@@ -259,12 +257,12 @@ const ContactPage = () => {
                     value={formData.preferredContact}
                     onChange={handleChange}
                   >
-                   <option value="email">Email</option>
+                    <option value="email">Email</option>
                     <option value="phone">Phone</option>
                   </select>
                 </div>
 
-                <div className="form-group">
+                <div className="cnt-form-group">
                   <label htmlFor="subject">Subject *</label>
                   <input
                     type="text"
@@ -275,11 +273,11 @@ const ContactPage = () => {
                     className={errors.subject ? 'error' : ''}
                   />
                   {errors.subject && (
-                    <span className="error-message">{errors.subject}</span>
+                    <span className="cnt-error-text">{errors.subject}</span>
                   )}
                 </div>
 
-                <div className="form-group">
+                <div className="cnt-form-group">
                   <label htmlFor="message">Message *</label>
                   <textarea
                     id="message"
@@ -290,7 +288,7 @@ const ContactPage = () => {
                     className={errors.message ? 'error' : ''}
                   ></textarea>
                   {errors.message && (
-                    <span className="error-message">{errors.message}</span>
+                    <span className="cnt-error-text">{errors.message}</span>
                   )}
                 </div>
 
@@ -305,21 +303,21 @@ const ContactPage = () => {
             </div>
 
             {/* Contact Information */}
-            <div className="contact-info">
+            <div className="cnt-info">
               {/* Departments */}
-              <div className="contact-section">
+              <div className="cnt-section">
                 <h3>Departments</h3>
-                <div className="departments-grid">
+                <div className="cnt-departments">
                   {departments.map((dept, index) => (
-                    <div key={index} className="department-card">
+                    <div key={index} className="cnt-dept-card">
                       <h4>{dept.name}</h4>
-                      <div className="contact-details">
-                        <div className="contact-item">
-                          <span className="icon">📞</span>
+                      <div className="cnt-dept-details">
+                        <div className="cnt-contact-item">
+                          <span className="cnt-icon">📞</span>
                           <a href={`tel:${dept.contact}`}>{dept.contact}</a>
                         </div>
-                        <div className="contact-item">
-                          <span className="icon">✉️</span>
+                        <div className="cnt-contact-item">
+                          <span className="cnt-icon">✉️</span>
                           <a href={`mailto:${dept.email}`}>{dept.email}</a>
                         </div>
                       </div>
@@ -329,31 +327,31 @@ const ContactPage = () => {
               </div>
 
               {/* Locations */}
-              <div className="contact-section">
+              <div className="cnt-section">
                 <h3>Our Locations</h3>
-                <div className="locations-grid">
+                <div className="cnt-locations">
                   {locations.map(location => (
-                    <div key={location.id} className="location-card">
+                    <div key={location.id} className="cnt-location-card">
                       <h4>{location.name}</h4>
-                      <div className="location-details">
-                        <div className="location-info">
-                          <p className="address">
+                      <div className="cnt-location-details">
+                        <div className="cnt-location-info">
+                          <p className="cnt-address">
                             {location.address}<br />
                             {location.city}
                           </p>
-                          <p className="hours">{location.hours}</p>
+                          <p className="cnt-hours">{location.hours}</p>
                         </div>
-                        <div className="location-contacts">
-                          <div className="contact-item">
-                            <span className="icon">📞</span>
+                        <div className="cnt-location-contacts">
+                          <div className="cnt-contact-item">
+                            <span className="cnt-icon">📞</span>
                             <a href={`tel:${location.phone}`}>{location.phone}</a>
                           </div>
-                          <div className="contact-item">
-                            <span className="icon">✉️</span>
+                          <div className="cnt-contact-item">
+                            <span className="cnt-icon">✉️</span>
                             <a href={`mailto:${location.email}`}>{location.email}</a>
                           </div>
                         </div>
-                        <div className="location-features">
+                        <div className="cnt-location-features">
                           <h5>Available Services:</h5>
                           <ul>
                             {location.features.map((feature, index) => (
@@ -378,12 +376,11 @@ const ContactPage = () => {
       </section>
 
       {/* Map Section */}
-      <section className="map-section">
-        <div className="container">
-          <div className="map-container">
-            {/* Placeholder for map - would integrate with Google Maps or similar */}
-            <div className="map-placeholder">
-              <div className="map-overlay">
+      <section className="cnt-map">
+        <div className="cnt-container">
+          <div className="cnt-map-container">
+            <div className="cnt-map-placeholder">
+              <div className="cnt-map-overlay">
                 <p>Interactive map would be integrated here</p>
                 <a
                   href="https://maps.google.com"

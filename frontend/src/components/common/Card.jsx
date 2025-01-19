@@ -14,46 +14,45 @@ const Card = ({
   headerActions,
   ...props
 }) => {
-  const baseClass = 'card';
   const classes = [
-    baseClass,
-    padding ? 'card-padded' : '',
-    border ? 'card-bordered' : '',
-    shadow ? 'card-shadow' : '',
-    hoverable ? 'card-hoverable' : '',
+    'crd-container',
+    padding ? 'crd-padded' : '',
+    border ? 'crd-bordered' : '',
+    shadow ? 'crd-shadow' : '',
+    hoverable ? 'crd-hoverable' : '',
     className
   ].filter(Boolean).join(' ');
 
   return (
     <div className={classes} {...props}>
       {(title || subtitle || headerActions) && (
-        <div className="card-header">
-          <div className="card-header-content">
+        <div className="crd-header">
+          <div className="crd-header-content">
             {title && (
               typeof title === 'string' ? (
-                <h3 className="card-title">{title}</h3>
+                <h3 className="crd-title">{title}</h3>
               ) : title
             )}
             {subtitle && (
-              <div className="card-subtitle">
+              <div className="crd-subtitle">
                 {subtitle}
               </div>
             )}
           </div>
           {headerActions && (
-            <div className="card-header-actions">
+            <div className="crd-header-actions">
               {headerActions}
             </div>
           )}
         </div>
       )}
       
-      <div className="card-content">
+      <div className="crd-body">
         {children}
       </div>
       
       {footer && (
-        <div className="card-footer">
+        <div className="crd-footer">
           {footer}
         </div>
       )}

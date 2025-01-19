@@ -68,75 +68,70 @@ const HomePage = () => {
 
   const services = [
     {
-      title: "Family Medicine",
-      description: "Comprehensive care for all ages",
+      title: "Herbal Consultations",
+      description: " Personalized consultations to assess health concerns and recommend appropriate herbal remedies",
       icon: "👨‍👩‍👧‍👦",
-      link: "/services/family-medicine"
+      
     },
     {
-      title: "Pediatrics",
-      description: "Specialized care for children",
+      title: "Detox Programs",
+      description: "Detox Programs",
       icon: "👶",
-      link: "/services/pediatrics"
     },
     {
-      title: "Cardiology",
-      description: "Expert heart care services",
+      title: "Custom Herbal Formulations",
+      description: " Preparation of personalized herbal tinctures, teas, oils, or capsules based on individual health needs.",
       icon: "❤️",
-      link: "/services/cardiology"
     },
     {
-      title: "Orthopedics",
-      description: "Musculoskeletal health specialists",
+      title: "Stress Management and Relaxation Therapies",
+      description: "Services that incorporate calming herbal treatments such as lavender, chamomile, or ashwagandha-based products to reduce anxiety, improve sleep, and promote relaxation.",
       icon: "🦴",
-      link: "/services/orthopedics"
     },
     {
-      title: "Neurology",
-      description: "Advanced neurological care",
+      title: "Digestive Health Solutions",
+      description: " Remedies for improving digestion and addressing conditions like bloating, acid reflux, and irritable bowel syndrome (IBS). Herbs like peppermint, ginger, and fennel are often recommended.",
       icon: "🧠",
-      link: "/services/neurology"
     },
     {
-      title: "Mental Health",
-      description: "Comprehensive mental wellness support",
+      title: "Anti-inflammatory Treatments",
+      description: "Herbal therapies to reduce inflammation and promote joint health, using ingredients like turmeric, boswellia, and willow bark.",
       icon: "🧘‍♂️",
-      link: "/services/mental-health"
     }
   ];
 
   return (
-    <div className="home">
+    <div className="home-wrapper">
       {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-content">
+      <section className="home-hero">
+        <div className="home-hero__content">
           <h1>Your Health, Our Priority</h1>
           <p>Advanced medical care with a personal touch. Experience healthcare excellence.</p>
-          <div className="hero-buttons">
-            <Link to="/appointments/book" className="btn btn-primary btn-lg">
+          <div className="home-hero__buttons">
+            <Link to="/appointments/book" className="home-btn home-btn--primary">
               Book Appointment
             </Link>
-            <Link to="/services" className="btn btn-outline btn-lg">
+            <Link to="/services" className="home-btn home-btn--outline">
               Our Services
             </Link>
           </div>
         </div>
-        <div className="hero-image">
+        <div className="home-hero__image">
           <img src="/images/hero-doctor.jpg" alt="Medical professionals" />
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="features">
-        <div className="section-container">
-          <div className="section-header">
+      <section className="home-features">
+        <div className="home-container">
+          <div className="home-section__header">
             <h2>Why Choose Us</h2>
             <p>Experience the difference with our comprehensive healthcare services</p>
           </div>
-          <div className="features-grid">
+          <div className="home-features__grid">
             {features.map((feature, index) => (
-              <div key={index} className="feature-card">
-                <span className="feature-icon">{feature.icon}</span>
+              <div key={index} className="home-feature__card">
+                <span className="home-feature__icon">{feature.icon}</span>
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
               </div>
@@ -146,13 +141,13 @@ const HomePage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="stats">
-        <div className="section-container">
-          <div className="stats-grid">
+      <section className="home-stats">
+        <div className="home-container">
+          <div className="home-stats__grid">
             {stats.map((stat, index) => (
-              <div key={index} className="stat-item">
-                <div className="stat-value">{stat.value}</div>
-                <div className="stat-label">{stat.label}</div>
+              <div key={index} className="home-stat__item">
+                <div className="home-stat__value">{stat.value}</div>
+                <div className="home-stat__label">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -160,16 +155,16 @@ const HomePage = () => {
       </section>
 
       {/* Services Section */}
-      <section className="services">
-        <div className="section-container">
-          <div className="section-header">
+      <section className="home-services">
+        <div className="home-container">
+          <div className="home-section__header">
             <h2>Our Services</h2>
             <p>Comprehensive healthcare solutions for you and your family</p>
           </div>
-          <div className="services-grid">
+          <div className="home-services__grid">
             {services.map((service, index) => (
-              <Link key={index} to={service.link} className="service-card">
-                <span className="service-icon">{service.icon}</span>
+              <Link key={index} to={service.link} className="home-service__card">
+                <span className="home-service__icon">{service.icon}</span>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
               </Link>
@@ -179,17 +174,17 @@ const HomePage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="testimonials">
-        <div className="section-container">
-          <div className="section-header">
+      <section className="home-testimonials">
+        <div className="home-container">
+          <div className="home-section__header">
             <h2>What Our Patients Say</h2>
             <p>Real experiences from our valued patients</p>
           </div>
-          <div className="testimonials-grid">
+          <div className="home-testimonials__grid">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial-card">
-                <div className="testimonial-content">{testimonial.content}</div>
-                <div className="testimonial-author">
+              <div key={index} className="home-testimonial__card">
+                <div className="home-testimonial__content">{testimonial.content}</div>
+                <div className="home-testimonial__author">
                   <img src={testimonial.image} alt={testimonial.author} />
                   <div>
                     <h4>{testimonial.author}</h4>
@@ -203,12 +198,12 @@ const HomePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="cta">
-        <div className="section-container">
-          <div className="cta-content">
+      <section className="home-cta">
+        <div className="home-container">
+          <div className="home-cta__content">
             <h2>Ready to Get Started?</h2>
             <p>Schedule your appointment today and experience the best in healthcare</p>
-            <Link to="/appointments/book" className="btn btn-primary btn-lg">
+            <Link to="/appointments/book" className="home-btn home-btn--primary home-btn--lg">
               Book Your Visit
             </Link>
           </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import '../../css/Button.css'; 
+import '../../css/Button.css';
+
 const Button = ({
   children,
   variant = 'primary',
@@ -13,12 +14,12 @@ const Button = ({
   icon,
   ...props
 }) => {
-  const baseClass = 'btn';
-  const variantClass = `btn-${variant}`;
-  const sizeClass = `btn-${size}`;
-  const widthClass = fullWidth ? 'btn-full' : '';
-  const loadingClass = loading ? 'btn-loading' : '';
-  const iconClass = icon ? 'btn-with-icon' : '';
+  const baseClass = 'mc-btn';
+  const variantClass = `mc-btn--${variant}`;
+  const sizeClass = `mc-btn--${size}`;
+  const widthClass = fullWidth ? 'mc-btn--full' : '';
+  const loadingClass = loading ? 'mc-btn--loading' : '';
+  const iconClass = icon ? 'mc-btn--with-icon' : '';
   
   const classes = [
     baseClass,
@@ -39,10 +40,10 @@ const Button = ({
       {...props}
     >
       {loading && (
-        <span className="btn-spinner" aria-hidden="true">
-          <svg className="animate-spin" viewBox="0 0 24 24">
+        <span className="mc-btn__spinner" aria-hidden="true">
+          <svg className="mc-btn__spinner-icon" viewBox="0 0 24 24">
             <circle
-              className="opacity-25"
+              className="mc-btn__spinner-circle"
               cx="12"
               cy="12"
               r="10"
@@ -51,15 +52,15 @@ const Button = ({
               fill="none"
             />
             <path
-              className="opacity-75"
+              className="mc-btn__spinner-path"
               fill="currentColor"
               d="M12 2a10 10 0 0110 10h-2a8 8 0 00-8-8V2z"
             />
           </svg>
         </span>
       )}
-      {icon && !loading && <span className="btn-icon">{icon}</span>}
-      <span className="btn-content">{children}</span>
+      {icon && !loading && <span className="mc-btn__icon">{icon}</span>}
+      <span className="mc-btn__content">{children}</span>
     </button>
   );
 };

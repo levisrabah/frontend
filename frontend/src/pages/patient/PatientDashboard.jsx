@@ -14,7 +14,6 @@ const PatientDashboard = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        // Fetch data from backend APIs in parallel
         const [
           appointmentsRes,
           prescriptionsRes,
@@ -63,7 +62,6 @@ const PatientDashboard = () => {
         });
       } catch (error) {
         console.error('Error fetching dashboard data:', error);
-        // Handle error state
       } finally {
         setLoading(false);
       }
@@ -87,29 +85,29 @@ const PatientDashboard = () => {
 
   if (loading) {
     return (
-      <div className="dashboard-loading">
-        <div className="loading-spinner"></div>
+      <div className="pat-loading">
+        <div className="pat-loading-spinner"></div>
         <p>Loading your dashboard...</p>
       </div>
     );
   }
 
   return (
-    <div className="patient-dashboard">
+    <div className="pat-dashboard">
       {/* Overview Section */}
-      <section className="dashboard-overview">
-        <div className="overview-grid">
-          <div className="overview-card">
+      <section className="pat-overview">
+        <div className="pat-overview-grid">
+          <div className="pat-overview-card">
             <h3>Next Appointment</h3>
             {getUpcomingAppointments()[0] ? (
-              <div className="next-appointment">
-                <div className="appointment-date">
+              <div className="pat-next-appointment">
+                <div className="pat-appointment-date">
                   {new Date(getUpcomingAppointments()[0].appointment_date).toLocaleDateString()}
                 </div>
-                <div className="appointment-time">
+                <div className="pat-appointment-time">
                   {new Date(getUpcomingAppointments()[0].appointment_date).toLocaleTimeString()}
                 </div>
-                <div className="appointment-type">
+                <div className="pat-appointment-type">
                   {getUpcomingAppointments()[0].type}
                 </div>
               </div>
@@ -121,17 +119,17 @@ const PatientDashboard = () => {
             </Link>
           </div>
 
-          <div className="overview-card">
+          <div className="pat-overview-card">
             <h3>Recent Prescriptions</h3>
             {getRecentPrescriptions().length > 0 ? (
-              <ul className="prescription-list">
+              <ul className="pat-prescription-list">
                 {getRecentPrescriptions().map(prescription => (
-                  <li key={prescription.id} className="prescription-item">
-                    <div className="prescription-info">
+                  <li key={prescription.id} className="pat-prescription-item">
+                    <div className="pat-prescription-info">
                       <strong>{prescription.medicine_name}</strong>
                       <span>{prescription.dosage}</span>
                     </div>
-                    <div className="prescription-date">
+                    <div className="pat-prescription-date">
                       {new Date(prescription.created_at).toLocaleDateString()}
                     </div>
                   </li>
@@ -145,20 +143,20 @@ const PatientDashboard = () => {
             </Link>
           </div>
 
-          <div className="overview-card">
+          <div className="pat-overview-card">
             <h3>Recent Activity</h3>
             {dashboardData.notifications.length > 0 ? (
-              <ul className="notification-list">
+              <ul className="pat-notification-list">
                 {dashboardData.notifications.slice(0, 3).map(notification => (
-                  <li key={notification.id} className="notification-item">
-                    <div className="notification-icon">
+                  <li key={notification.id} className="pat-notification-item">
+                    <div className="pat-notification-icon">
                       {notification.type === 'appointment' ? '📅' :
                        notification.type === 'result' ? '📋' :
                        notification.type === 'reminder' ? '⏰' : '📢'}
                     </div>
-                    <div className="notification-content">
+                    <div className="pat-notification-content">
                       <p>{notification.message}</p>
-                      <span className="notification-time">
+                      <span className="pat-notification-time">
                         {new Date(notification.created_at).toLocaleString()}
                       </span>
                     </div>
@@ -176,29 +174,29 @@ const PatientDashboard = () => {
       </section>
 
       {/* Quick Actions Section */}
-      <section className="dashboard-actions">
+      <section className="pat-actions">
         <h3>Quick Actions</h3>
-        <div className="actions-grid">
-          <Link to="/appointments/book" className="action-card">
-            <div className="action-icon">📅</div>
+        <div className="pat-actions-grid">
+          <Link to="/appointments/book" className="pat-action-card">
+            <div className="pat-action-icon">📅</div>
             <h4>Book Appointment</h4>
             <p>Schedule a visit with your healthcare provider</p>
           </Link>
 
-          <Link to="/virtual-consultation" className="action-card">
-            <div className="action-icon">💻</div>
+          <Link to="/virtual-consultation" className="pat-action-card">
+            <div className="pat-action-icon">💻</div>
             <h4>Virtual Consultation</h4>
             <p>Connect with a doctor online</p>
           </Link>
 
-          <Link to="/prescriptions/refill" className="action-card">
-            <div className="action-icon">💊</div>
+          <Link to="/prescriptions/refill" className="pat-action-card">
+            <div className="pat-action-icon">💊</div>
             <h4>Request Refill</h4>
             <p>Request prescription refills online</p>
           </Link>
 
-          <Link to="/messages" className="action-card">
-            <div className="action-icon">✉️</div>
+          <Link to="/messages" className="pat-action-card">
+            <div className="pat-action-icon">✉️</div>
             <h4>Message Doctor</h4>
             <p>Send a message to your healthcare team</p>
           </Link>
@@ -206,24 +204,24 @@ const PatientDashboard = () => {
       </section>
 
       {/* Medical Records Section */}
-      <section className="dashboard-records">
-        <div className="section-header">
+      <section className="pat-records">
+        <div className="pat-section-header">
           <h3>Medical Records</h3>
           <Link to="/medical-records" className="btn btn-outline">
             View All Records
           </Link>
         </div>
-        <div className="records-timeline">
+        <div className="pat-records-timeline">
           {dashboardData.medicalHistory.length > 0 ? (
             dashboardData.medicalHistory.map(record => (
-              <div key={record.id} className="timeline-item">
-                <div className="timeline-date">
+              <div key={record.id} className="pat-timeline-item">
+                <div className="pat-timeline-date">
                   {new Date(record.diagnosis_date).toLocaleDateString()}
                 </div>
-                <div className="timeline-content">
+                <div className="pat-timeline-content">
                   <h4>{record.condition_name}</h4>
-                  <p className="status">Status: {record.status}</p>
-                  {record.notes && <p className="notes">{record.notes}</p>}
+                  <p className="pat-record-status">Status: {record.status}</p>
+                  {record.notes && <p className="pat-record-notes">{record.notes}</p>}
                 </div>
               </div>
             ))

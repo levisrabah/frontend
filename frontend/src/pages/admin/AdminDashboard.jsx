@@ -1,4 +1,3 @@
-//AdminDashboard.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../css/AdminDashboard.css';
@@ -83,67 +82,67 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="dashboard-loading">
-        <div className="loading-spinner"></div>
+      <div className="adm-loading">
+        <div className="adm-loading-spinner"></div>
         <p>Loading dashboard...</p>
       </div>
     );
   }
 
   return (
-    <div className="admin-dashboard">
-      {/* Overview Stats */}
-      <section className="dashboard-stats">
-        <div className="stats-grid">
-          <div className="stat-card">
-            <div className="stat-icon patients-icon">👥</div>
-            <div className="stat-info">
+    <div className="adm-dashboard">
+      {/* Stats Overview */}
+      <section className="adm-stats">
+        <div className="adm-stats-grid">
+          <div className="adm-stat-card">
+            <div className="adm-stat-icon adm-patients-icon">👥</div>
+            <div className="adm-stat-info">
               <h3>Total Patients</h3>
-              <div className="stat-value">{dashboardData.stats.totalPatients}</div>
-              <div className="stat-change increase">+5% this month</div>
+              <div className="adm-stat-value">{dashboardData.stats.totalPatients}</div>
+              <div className="adm-stat-change adm-increase">+5% this month</div>
             </div>
           </div>
 
-          <div className="stat-card">
-            <div className="stat-icon staff-icon">👨‍⚕️</div>
-            <div className="stat-info">
+          <div className="adm-stat-card">
+            <div className="adm-stat-icon adm-staff-icon">👨‍⚕️</div>
+            <div className="adm-stat-info">
               <h3>Medical Staff</h3>
-              <div className="stat-value">{dashboardData.stats.totalStaff}</div>
-              <div className="stat-change">+2 new this month</div>
+              <div className="adm-stat-value">{dashboardData.stats.totalStaff}</div>
+              <div className="adm-stat-change">+2 new this month</div>
             </div>
           </div>
 
-          <div className="stat-card">
-            <div className="stat-icon appointments-icon">📅</div>
-             <div className="stat-info">
+          <div className="adm-stat-card">
+            <div className="adm-stat-icon adm-appointments-icon">📅</div>
+            <div className="adm-stat-info">
               <h3>Total Appointments</h3>
-              <div className="stat-value">{dashboardData.stats.totalAppointments}</div>
-              <div className="stat-change increase">+12% this month</div>
+              <div className="adm-stat-value">{dashboardData.stats.totalAppointments}</div>
+              <div className="adm-stat-change adm-increase">+12% this month</div>
             </div>
           </div>
 
-          <div className="stat-card">
-            <div className="stat-icon revenue-icon">💰</div>
-            <div className="stat-info">
+          <div className="adm-stat-card">
+            <div className="adm-stat-icon adm-revenue-icon">💰</div>
+            <div className="adm-stat-info">
               <h3>Monthly Revenue</h3>
-              <div className="stat-value">{formatCurrency(dashboardData.stats.revenue)}</div>
-              <div className="stat-change increase">+8% vs last month</div>
+              <div className="adm-stat-value">{formatCurrency(dashboardData.stats.revenue)}</div>
+              <div className="adm-stat-change adm-increase">+8% vs last month</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Alerts and Notifications */}
+      {/* Alerts Section */}
       {dashboardData.alerts.length > 0 && (
-        <section className="alerts-section">
-          <div className="alerts-container">
+        <section className="adm-alerts">
+          <div className="adm-alerts-container">
             {dashboardData.alerts.map(alert => (
-              <div key={alert.id} className={`alert-item ${alert.priority}`}>
-                <span className="alert-icon">
+              <div key={alert.id} className={`adm-alert-item adm-${alert.priority}`}>
+                <span className="adm-alert-icon">
                   {alert.priority === 'high' ? '🚨' : 
                    alert.priority === 'medium' ? '⚠️' : 'ℹ️'}
                 </span>
-                <div className="alert-content">
+                <div className="adm-alert-content">
                   <h4>{alert.title}</h4>
                   <p>{alert.message}</p>
                 </div>
@@ -154,58 +153,55 @@ const AdminDashboard = () => {
         </section>
       )}
 
-      {/* Main Dashboard Content */}
-      <div className="dashboard-grid">
-        {/* Staff Management */}
-        <section className="dashboard-section">
-          <div className="section-header">
+      {/* Dashboard Grid */}
+      <div className="adm-dashboard-grid">
+        {/* Staff Section */}
+        <section className="adm-section">
+          <div className="adm-section-header">
             <h2>Recently Added Staff</h2>
             <Link to="/admin/staff" className="btn btn-outline">Manage Staff</Link>
           </div>
-          <div className="staff-list">
+          <div className="adm-staff-list">
             {dashboardData.recentStaff.map(staff => (
-              <div key={staff.id} className="staff-card">
-                <div className="staff-avatar">
+              <div key={staff.id} className="adm-staff-card">
+                <div className="adm-staff-avatar">
                   {staff.user.name.charAt(0)}
                 </div>
-                <div className="staff-info">
+                <div className="adm-staff-info">
                   <h4>{staff.user.name}</h4>
                   <p>{staff.designation}</p>
-                  <div className="staff-meta">
-                    <span className="rating">⭐ {staff.rating}</span>
-                    <span className="department">{staff.department}</span>
+                  <div className="adm-staff-meta">
+                    <span className="adm-rating">⭐ {staff.rating}</span>
+                    <span className="adm-department">{staff.department}</span>
                   </div>
-                </div>
-                <div className="staff-actions">
-                  <Link to={`/admin/staff/${staff.id}`} className="btn btn-sm">
-                    View Profile
-                  </Link>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Upcoming Appointments */}
-        <section className="dashboard-section">
-          <div className="section-header">
+        {/* Appointments Section */}
+        <section className="adm-section">
+          <div className="adm-section-header">
             <h2>Upcoming Appointments</h2>
             <Link to="/admin/appointments" className="btn btn-outline">View All</Link>
           </div>
-          <div className="appointments-list">
+          <div className="adm-appointments-list">
             {dashboardData.appointments.map(appointment => (
-              <div key={appointment.id} className="appointment-card">
-                <div className="appointment-time">
+              <div key={appointment.id} className="adm-appointment-card">
+                <div className="adm-appointment-time">
                   {new Date(appointment.appointment_date).toLocaleString()}
                 </div>
-                <div className="appointment-details">
-                  <div className="patient-info">
+                <div className="adm-appointment-details">
+                  <div className="adm-patient-info">
                     <h4>{appointment.patient.user.name}</h4>
                     <p>with Dr. {appointment.staff.user.name}</p>
                   </div>
-                  <div className="appointment-type">
+                  <div className="adm-appointment-type">
                     {appointment.type}
-                    {appointment.is_virtual && <span className="virtual-badge">Virtual</span>}
+                    {appointment.is_virtual && 
+                      <span className="adm-virtual-badge">Virtual</span>
+                    }
                   </div>
                 </div>
               </div>
@@ -215,11 +211,11 @@ const AdminDashboard = () => {
       </div>
 
       {/* Analytics Section */}
-      <section className="analytics-section">
-        <div className="section-header">
+      <section className="adm-analytics">
+        <div className="adm-section-header">
           <h2>Performance Analytics</h2>
-          <div className="analytics-controls">
-            <select defaultValue="6" className="time-range-select">
+          <div className="adm-analytics-controls">
+            <select defaultValue="6" className="adm-time-select">
               <option value="3">Last 3 months</option>
               <option value="6">Last 6 months</option>
               <option value="12">Last 12 months</option>
@@ -227,23 +223,27 @@ const AdminDashboard = () => {
             <button className="btn btn-outline">Export Report</button>
           </div>
         </div>
-        
-        <div className="analytics-grid">
-          {/* Patients by Department */}
-          <div className="analytics-card">
+
+        <div className="adm-analytics-grid">
+          {/* Department Distribution */}
+          <div className="adm-analytics-card">
             <h3>Patients by Department</h3>
-            <div className="chart-container">
-              <div className="department-distribution">
+            <div className="adm-chart-container">
+              <div className="adm-dept-distribution">
                 {dashboardData.patientsByDepartment.map(dept => (
-                  <div key={dept.department} className="distribution-item">
-                    <div className="department-label">
-                      <span className="dept-name">{dept.department}</span>
-                      <span className="dept-count">{dept.count}</span>
+                  <div key={dept.department} className="adm-dept-item">
+                    <div className="adm-dept-label">
+                      <span className="adm-dept-name">{dept.department}</span>
+                      <span className="adm-dept-count">{dept.count}</span>
                     </div>
-                    <div className="progress-bar">
+                    <div className="adm-progress-bar">
                       <div 
-                        className="progress" 
-                        style={{ width: `${(dept.count / Math.max(...dashboardData.patientsByDepartment.map(d => d.count))) * 100}%` }}
+                        className="adm-progress" 
+                        style={{ 
+                          width: `${(dept.count / Math.max(
+                            ...dashboardData.patientsByDepartment.map(d => d.count)
+                          )) * 100}%` 
+                        }}
                       ></div>
                     </div>
                   </div>
@@ -252,22 +252,26 @@ const AdminDashboard = () => {
             </div>
           </div>
 
-          {/* Revenue Trend */}
-          <div className="analytics-card">
+          {/* Revenue Chart */}
+          <div className="adm-analytics-card">
             <h3>Revenue Trend</h3>
-            <div className="chart-container">
-              <div className="revenue-trend">
-                {dashboardData.revenueByMonth.map((month, index) => (
-                  <div key={month.month} className="trend-bar">
+            <div className="adm-chart-container">
+              <div className="adm-revenue-trend">
+                {dashboardData.revenueByMonth.map(month => (
+                  <div key={month.month} className="adm-trend-bar">
                     <div 
-                      className="bar"
+                      className="adm-bar"
                       style={{ 
-                        height: `${(month.revenue / Math.max(...dashboardData.revenueByMonth.map(m => m.revenue))) * 100}%` 
+                        height: `${(month.revenue / Math.max(
+                          ...dashboardData.revenueByMonth.map(m => m.revenue)
+                        )) * 100}%` 
                       }}
                     >
-                      <span className="bar-value">{formatCurrency(month.revenue)}</span>
+                      <span className="adm-bar-value">
+                        {formatCurrency(month.revenue)}
+                      </span>
                     </div>
-                    <span className="bar-label">{month.month}</span>
+                    <span className="adm-bar-label">{month.month}</span>
                   </div>
                 ))}
               </div>
@@ -277,29 +281,29 @@ const AdminDashboard = () => {
       </section>
 
       {/* Quick Actions */}
-      <section className="quick-actions-section">
+      <section className="adm-quick-actions">
         <h2>Quick Actions</h2>
-        <div className="actions-grid">
-          <Link to="/admin/staff/new" className="action-card">
-            <div className="action-icon">👥</div>
+        <div className="adm-actions-grid">
+          <Link to="/admin/staff/new" className="adm-action-card">
+            <div className="adm-action-icon">👥</div>
             <h3>Add Staff</h3>
             <p>Register new medical staff</p>
           </Link>
 
-          <Link to="/admin/departments" className="action-card">
-            <div className="action-icon">🏥</div>
+          <Link to="/admin/departments" className="adm-action-card">
+            <div className="adm-action-icon">🏥</div>
             <h3>Manage Departments</h3>
             <p>Configure department settings</p>
           </Link>
 
-          <Link to="/admin/reports" className="action-card">
-            <div className="action-icon">📊</div>
+          <Link to="/admin/reports" className="adm-action-card">
+            <div className="adm-action-icon">📊</div>
             <h3>Generate Reports</h3>
             <p>Create custom analytics reports</p>
           </Link>
 
-          <Link to="/admin/settings" className="action-card">
-            <div className="action-icon">⚙️</div>
+          <Link to="/admin/settings" className="adm-action-card">
+            <div className="adm-action-icon">⚙️</div>
             <h3>System Settings</h3>
             <p>Configure system preferences</p>
           </Link>

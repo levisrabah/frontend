@@ -1,7 +1,6 @@
-//StaffDashboard.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './StaffDashboard.css';
+import '../../css/StaffDashboard.css';
 
 const StaffDashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -59,7 +58,6 @@ const StaffDashboard = () => {
         });
       } catch (error) {
         console.error('Error fetching dashboard data:', error);
-        // Handle error state
       } finally {
         setLoading(false);
       }
@@ -80,7 +78,6 @@ const StaffDashboard = () => {
       });
 
       if (response.ok) {
-        // Update local state
         setDashboardData(prev => ({
           ...prev,
           todayAppointments: prev.todayAppointments.map(apt =>
@@ -95,82 +92,82 @@ const StaffDashboard = () => {
 
   if (loading) {
     return (
-      <div className="dashboard-loading">
-        <div className="loading-spinner"></div>
+      <div className="stf-loading">
+        <div className="stf-loading-spinner"></div>
         <p>Loading dashboard...</p>
       </div>
     );
   }
 
   return (
-    <div className="staff-dashboard">
+    <div className="stf-dashboard">
       {/* Stats Overview */}
-      <section className="dashboard-stats">
-        <div className="stats-grid">
-          <div className="stat-card">
-            <div className="stat-icon appointments-icon">📅</div>
-            <div className="stat-info">
+      <section className="stf-stats">
+        <div className="stf-stats-grid">
+          <div className="stf-stat-card">
+            <div className="stf-stat-icon stf-appointments-icon">📅</div>
+            <div className="stf-stat-info">
               <h3>Today's Appointments</h3>
-              <div className="stat-value">{dashboardData.todayAppointments.length}</div>
+              <div className="stf-stat-value">{dashboardData.todayAppointments.length}</div>
             </div>
           </div>
 
-          <div className="stat-card">
-            <div className="stat-icon patients-icon">👥</div>
-            <div className="stat-info">
+          <div className="stf-stat-card">
+            <div className="stf-stat-icon stf-patients-icon">👥</div>
+            <div className="stf-stat-info">
               <h3>Total Patients</h3>
-              <div className="stat-value">{dashboardData.patients.length}</div>
+              <div className="stf-stat-value">{dashboardData.patients.length}</div>
             </div>
           </div>
 
-          <div className="stat-card">
-            <div className="stat-icon requests-icon">📨</div>
-            <div className="stat-info">
+          <div className="stf-stat-card">
+            <div className="stf-stat-icon stf-requests-icon">📨</div>
+            <div className="stf-stat-info">
               <h3>Pending Requests</h3>
-              <div className="stat-value">{dashboardData.pendingRequests.length}</div>
+              <div className="stf-stat-value">{dashboardData.pendingRequests.length}</div>
             </div>
           </div>
 
-          <div className="stat-card">
-            <div className="stat-icon visits-icon">🏥</div>
-            <div className="stat-info">
+          <div className="stf-stat-card">
+            <div className="stf-stat-icon stf-visits-icon">🏥</div>
+            <div className="stf-stat-info">
               <h3>Recent Visits</h3>
-              <div className="stat-value">{dashboardData.recentVisits.length}</div>
+              <div className="stf-stat-value">{dashboardData.recentVisits.length}</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Today's Appointments */}
-      <section className="dashboard-section">
-        <div className="section-header">
+      <section className="stf-section">
+        <div className="stf-section-header">
           <h2>Today's Appointments</h2>
           <Link to="/staff/appointments" className="btn btn-outline">
             View All Appointments
           </Link>
         </div>
-        <div className="appointments-list">
+        <div className="stf-appointments-list">
           {dashboardData.todayAppointments.length > 0 ? (
             dashboardData.todayAppointments.map(appointment => (
-              <div key={appointment.id} className="appointment-card">
-                <div className="appointment-time">
+              <div key={appointment.id} className="stf-appointment-card">
+                <div className="stf-appointment-time">
                   {new Date(appointment.appointment_date).toLocaleTimeString([], {
                     hour: '2-digit',
                     minute: '2-digit'
                   })}
                 </div>
-                <div className="appointment-info">
+                <div className="stf-appointment-info">
                   <h4>{appointment.patient.user.name}</h4>
-                  <p className="appointment-type">{appointment.type}</p>
-                  <div className={`appointment-status ${appointment.status}`}>
+                  <p className="stf-appointment-type">{appointment.type}</p>
+                  <div className={`stf-appointment-status ${appointment.status}`}>
                     {appointment.status}
                   </div>
                 </div>
-                <div className="appointment-actions">
+                <div className="stf-appointment-actions">
                   <select
                     value={appointment.status}
                     onChange={(e) => handleAppointmentStatusChange(appointment.id, e.target.value)}
-                    className="status-select"
+                    className="stf-status-select"
                   >
                     <option value="scheduled">Scheduled</option>
                     <option value="completed">Completed</option>
@@ -195,71 +192,65 @@ const StaffDashboard = () => {
               </div>
             ))
           ) : (
-            <div className="no-data">No appointments scheduled for today</div>
+            <div className="stf-no-data">No appointments scheduled for today</div>
           )}
         </div>
       </section>
 
       {/* Recent Activity */}
-      <div className="dashboard-grid">
+      <div className="stf-dashboard-grid">
         {/* Pending Requests */}
-        <section className="dashboard-section">
-          <div className="section-header">
+        <section className="stf-section">
+          <div className="stf-section-header">
             <h2>Pending Requests</h2>
-            <Link to="/staff/requests" className="btn btn-outline">
-              View All
-            </Link>
+            <Link to="/staff/requests" className="btn btn-outline">View All</Link>
           </div>
-          <div className="requests-list">
+          <div className="stf-requests-list">
             {dashboardData.pendingRequests.length > 0 ? (
               dashboardData.pendingRequests.map(request => (
-                <div key={request.id} className="request-card">
-                  <div className="request-type-icon">
+                <div key={request.id} className="stf-request-card">
+                  <div className="stf-request-icon">
                     {request.type === 'prescription' ? '💊' :
                      request.type === 'appointment' ? '📅' :
                      request.type === 'referral' ? '📋' : '📝'}
                   </div>
-                  <div className="request-info">
+                  <div className="stf-request-info">
                     <h4>{request.patient.user.name}</h4>
                     <p>{request.description}</p>
-                    <span className="request-date">
+                    <span className="stf-request-date">
                       {new Date(request.created_at).toLocaleDateString()}
                     </span>
                   </div>
-                  <div className="request-actions">
-                    <button className="btn btn-primary btn-sm">
-                      Review
-                    </button>
+                  <div className="stf-request-actions">
+                    <button className="btn btn-primary btn-sm">Review</button>
                   </div>
                 </div>
               ))
             ) : (
-              <div className="no-data">No pending requests</div>
+              <div className="stf-no-data">No pending requests</div>
             )}
           </div>
         </section>
 
         {/* Recent Visits */}
-        <section className="dashboard-section">
-          <div className="section-header">
+        <section className="stf-section">
+          <div className="stf-section-header">
             <h2>Recent Visits</h2>
-            <Link to="/staff/visits" className="btn btn-outline">
-              View All
-            </Link>
+            <Link to="/staff/visits" className="btn btn-outline">View All</Link>
           </div>
-          <div className="visits-list">
+          <div className="stf-visits-list">
             {dashboardData.recentVisits.length > 0 ? (
               dashboardData.recentVisits.map(visit => (
-                <div key={visit.id} className="visit-card">
-                  <div className="visit-date">
+                <div key={visit.id} className="stf-visit-card">
+                  <div className="stf-visit-date">
                     {new Date(visit.visit_date).toLocaleDateString()}
                   </div>
-                  <div className="visit-info">
+                  <div className="stf-visit-info">
                     <h4>{visit.patient.user.name}</h4>
-                    <p className="visit-type">{visit.consultation_type}</p>
-                    <p className="visit-diagnosis">{visit.diagnosis}</p>
+                    <p className="stf-visit-type">{visit.consultation_type}</p>
+                    <p className="stf-visit-diagnosis">{visit.diagnosis}</p>
                   </div>
-                  <div className="visit-actions">
+                  <div className="stf-visit-actions">
                     <Link
                       to={`/staff/visits/${visit.id}`}
                       className="btn btn-outline btn-sm"
@@ -270,36 +261,36 @@ const StaffDashboard = () => {
                 </div>
               ))
             ) : (
-              <div className="no-data">No recent visits</div>
+              <div className="stf-no-data">No recent visits</div>
             )}
           </div>
         </section>
       </div>
 
       {/* Quick Actions */}
-      <section className="dashboard-section">
+      <section className="stf-quick-actions">
         <h2>Quick Actions</h2>
-        <div className="quick-actions">
-          <Link to="/staff/appointments/new" className="action-card">
-            <div className="action-icon">📅</div>
+        <div className="stf-actions-grid">
+          <Link to="/staff/appointments/new" className="stf-action-card">
+            <div className="stf-action-icon">📅</div>
             <h3>New Appointment</h3>
             <p>Schedule an appointment</p>
           </Link>
 
-          <Link to="/staff/patients/new" className="action-card">
-            <div className="action-icon">👤</div>
+          <Link to="/staff/patients/new" className="stf-action-card">
+            <div className="stf-action-icon">👤</div>
             <h3>Add Patient</h3>
             <p>Register new patient</p>
           </Link>
 
-          <Link to="/staff/prescriptions/new" className="action-card">
-            <div className="action-icon">💊</div>
+          <Link to="/staff/prescriptions/new" className="stf-action-card">
+            <div className="stf-action-icon">💊</div>
             <h3>Write Prescription</h3>
             <p>Create new prescription</p>
           </Link>
 
-          <Link to="/staff/visits/new" className="action-card">
-            <div className="action-icon">📝</div>
+          <Link to="/staff/visits/new" className="stf-action-card">
+            <div className="stf-action-icon">📝</div>
             <h3>Record Visit</h3>
             <p>Document patient visit</p>
           </Link>

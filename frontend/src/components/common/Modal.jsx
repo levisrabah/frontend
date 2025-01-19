@@ -48,7 +48,7 @@ const Modal = ({
   const modalContent = (
     <div 
       ref={modalRef}
-      className="modal-overlay"
+      className="mdl-overlay"
       onClick={handleOverlayClick}
       aria-modal="true"
       role="dialog"
@@ -56,14 +56,14 @@ const Modal = ({
     >
       <div
         ref={modalContentRef}
-        className={`modal-content modal-${size} ${className}`}
+        className={`mdl-content mdl-${size} ${className}`}
         tabIndex="-1"
       >
-        <div className="modal-header">
-          {title && <h2 className="modal-title">{title}</h2>}
+        <div className="mdl-header">
+          {title && <h2 className="mdl-title">{title}</h2>}
           {showCloseButton && (
             <button
-              className="modal-close"
+              className="mdl-close-btn"
               onClick={onClose}
               aria-label="Close modal"
             >
@@ -77,11 +77,11 @@ const Modal = ({
           )}
         </div>
 
-        <div className="modal-body">
+        <div className="mdl-body">
           {children}
         </div>
 
-        {footer && <div className="modal-footer">{footer}</div>}
+        {footer && <div className="mdl-footer">{footer}</div>}
       </div>
     </div>
   );

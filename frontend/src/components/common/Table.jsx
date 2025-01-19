@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import '../../css/Table.css';
+// import '../../css/Table.css';
 
 const Table = ({
   columns,

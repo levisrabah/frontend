@@ -9,18 +9,17 @@ const Loading = ({
   className = '',
   ...props
 }) => {
-  const baseClass = 'loading';
   const classes = [
-    baseClass,
-    `loading-${size}`,
-    `loading-${variant}`,
-    fullScreen ? 'loading-fullscreen' : '',
+    'ldr-container',
+    `ldr-${size}`,
+    `ldr-${variant}`,
+    fullScreen ? 'ldr-fullscreen' : '',
     className
   ].filter(Boolean).join(' ');
 
   return (
     <div className={classes} role="status" {...props}>
-      <div className="loading-spinner">
+      <div className="ldr-spinner">
         <svg viewBox="0 0 50 50">
           <circle
             cx="25"
@@ -28,12 +27,12 @@ const Loading = ({
             r="20"
             fill="none"
             strokeWidth="5"
-            className="loading-circle"
+            className="ldr-circle"
           />
         </svg>
       </div>
-      {text && <div className="loading-text">{text}</div>}
-      <span className="sr-only">Loading...</span>
+      {text && <div className="ldr-text">{text}</div>}
+      <span className="ldr-sr-only">Loading...</span>
     </div>
   );
 };
@@ -49,9 +48,9 @@ export const LoadingOverlay = ({
   if (!active) return children;
 
   return (
-    <div className="loading-overlay-container">
+    <div className="ldr-overlay-wrapper">
       {children}
-      <div className={`loading-overlay ${blur ? 'loading-overlay-blur' : ''} ${className}`}>
+      <div className={`ldr-overlay ${blur ? 'ldr-overlay-blur' : ''} ${className}`}>
         <Loading text={text} {...props} />
       </div>
     </div>
